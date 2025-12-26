@@ -1,0 +1,87 @@
+<h2>Ajouter un Formateur</h2>
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div>
+        <label for="fName" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez le nom de formateur" required
+            minlength="3" [(ngModel)]="nom" #nom="ngModel" />
+        <!--Input validator-->
+        @if(nom.invalid && (nom.dirty || nom.touched)) {
+        @if(nom.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } @if(nom.hasError('minlength')) {
+        <div class="invalid-feedback">Le nom doit contenir au moins 3 caractères.</div>
+        } }
+    </div>
+    <div>
+        <label for="fName" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom de formateur"
+            required minlength="3" [(ngModel)]="prenom" #prenom="ngModel" />
+        <!--Input validator-->
+        @if(prenom.invalid && (prenom.dirty || prenom.touched)) {
+        @if(prenom.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } @if(prenom.hasError('minlength')) {
+        <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
+        } }
+    </div>
+    <div>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez l'email de formateur"
+            required email [(ngModel)]="email" #email="ngModel" />
+        <!--Input validator-->
+        @if(email.invalid && (email.dirty || email.touched)) {
+        @if(email.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } @if(email.hasError('email')) {
+        <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
+        } }
+    </div>
+    <div>
+        <label for="number">Numéro de téléphone</label>
+        <input type="number" class="form-control" id="phone" name="phone"
+            placeholder="Entrez le numéro de téléphone de formateur" required [(ngModel)]="phone" #phone="ngModel" />
+        <!--Input validator-->
+        @if(phone.invalid && (phone.dirty || phone.touched)) {
+        @if(phone.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } }
+    </div>
+    <div>
+        <label for="cin">CIN</label>
+        <input type="text" class="form-control" id="cin" name="cin" pattern="[0-9]{8}"
+            placeholder="Entrez le CIN de formateur" required [(ngModel)]="cin" #cin="ngModel" />
+        <!--Input validator-->
+        @if(cin.invalid && (cin.dirty || cin.touched)) {
+        @if(cin.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        }
+        @if(cin.hasError('pattern')) {
+        <div class="invalid-feedback">Le CIN doit contenir exactement 8 chiffres.</div>
+        } }
+    </div>
+    <div>
+        <label for="specialites">Spécialités</label>
+        <input type="text" class="form-control" id="specialite" name="specialite"
+            placeholder="Entrez les spécialités de formateur (séparées par des virgules)" required
+            [(ngModel)]="specialite" #specialite="ngModel" />
+        <!--Input validator-->
+        @if(specialite.invalid && (specialite.dirty || specialite.touched)) {
+        @if(specialite.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } }
+    </div>
+    <div>
+        <label for="cv">CV</label>
+        <input type="text" class="form-control" id="cv" name="cv" placeholder="Entrez le CV de formateur" required
+            [(ngModel)]="cv" #cv="ngModel" />
+        <!--Input validator-->
+        @if(cv.invalid && (cv.dirty || cv.touched)) {
+        @if(cv.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis</div>
+        } }
+    </div>
+    <div>
+        <button type="button" (click)="onHideDialog()" class="btn btn-primary" [disabled]="f.invalid">Cancel</button>
+        <button type="submit" (click)="onSubmit()" class="btn btn-success">Ajouter</button>
+    </div>
+</form>
