@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -13,24 +13,24 @@ import { FormationService } from '../../admin/gestion-formations/formation.servi
   styleUrls: ['./formations.css'],
 })
 export class PublicFormations implements OnInit {
-  formations: Formation[] = [];
-  searchTerm = '';
-
-  constructor(private formationService: FormationService) {}
-
-  ngOnInit(): void {
-    this.formations = this.formationService.getFormations();
-  }
-
-  get filteredFormations(): Formation[] {
-    const term = this.searchTerm.toLowerCase().trim();
+  private formations = signal<Formation[]>([]);
+  searchTerm = signal('');
+  filteredFormations = computed(() => {
+    const term = this.searchTerm().toLowerCase().trim();
+    const list = this.formations();
     if (!term) {
-      return this.formations;
+      return list;
     }
-    return this.formations.filter(
+    return list.filter(
       (formation) =>
         formation.titre.toLowerCase().includes(term) ||
         formation.tags.some((tag) => tag.toLowerCase().includes(term))
     );
+  });
+
+  constructor(private formationService: FormationService) {}
+
+  ngOnInit(): void {
+    this.formations.set(this.formationService.getFormations());
   }
 }

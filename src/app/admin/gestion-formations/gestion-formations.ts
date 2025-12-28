@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Formation } from '../../models/formations.model';
@@ -14,36 +14,36 @@ import { UpdateFormation } from './update-formation/update-formation';
   styleUrls: ['./gestion-formations.css'],
 })
 export class GestionFormations {
-  formations: Formation[] = [];
-  showAdd = false;
-  showUpdate = false;
-  selectedFormation: Formation | null = null;
+  formations = signal<Formation[]>([]);
+  showAdd = signal(false);
+  showUpdate = signal(false);
+  selectedFormation = signal<Formation | null>(null);
 
   constructor(private formationService: FormationService) {
     this.refresh();
   }
 
   refresh(): void {
-    this.formations = this.formationService.getFormations();
+    this.formations.set(this.formationService.getFormations());
   }
 
   onAdd(): void {
-    this.showAdd = true;
+    this.showAdd.set(true);
   }
 
   onHideAdd(): void {
-    this.showAdd = false;
+    this.showAdd.set(false);
     this.refresh();
   }
 
   onEdit(formation: Formation): void {
-    this.selectedFormation = formation;
-    this.showUpdate = true;
+    this.selectedFormation.set(formation);
+    this.showUpdate.set(true);
   }
 
   onHideUpdate(): void {
-    this.showUpdate = false;
-    this.selectedFormation = null;
+    this.showUpdate.set(false);
+    this.selectedFormation.set(null);
     this.refresh();
   }
 
@@ -53,4 +53,4 @@ export class GestionFormations {
       this.refresh();
     }
   }
-} 
+}

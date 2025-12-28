@@ -1,13 +1,20 @@
 <section class="mb-4">
   <h2>Gestion des formations</h2>
-  <p>Liste des formations enregistrées (admin)</p>
+  <p>Liste des formations enregistrAces (admin)</p>
   <button class="btn btn-primary mb-3" (click)="onAdd()">Ajouter une formation</button>
 
-  <ng-container *ngIf="showAdd">
-    <app-add-formation (hideDialogEvent)="onHideAdd()"></app-add-formation></ng-container>
-  <ng-container *ngIf="showUpdate">
-    <app-update-formation [formation]="selectedFormation" (hideDialogEvent)="onHideUpdate()"></app-update-formation></ng-container>
-  <ng-container *ngIf="formations.length">
+  @if (showAdd()) {
+    <app-add-formation (hideDialogEvent)="onHideAdd()"></app-add-formation>
+  }
+
+  @if (showUpdate()) {
+    <app-update-formation
+      [formation]="selectedFormation()"
+      (hideDialogEvent)="onHideUpdate()"
+    ></app-update-formation>
+  }
+
+  @if (formations().length > 0) {
     <div>
       <table class="table table-striped">
         <thead>
@@ -20,7 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (let f of formations) {
+          @for (f of formations(); track f.id) {
             <tr>
               <td>{{ f.id }}</td>
               <td>{{ f.titre }}</td>
@@ -30,10 +37,12 @@
                 <button class="btn btn-sm btn-outline-secondary me-1" (click)="onEdit(f)">Modifier</button>
                 <button class="btn btn-sm btn-danger" (click)="onDelete(f.id)">Supprimer</button>
               </td>
-            </tr></ng-container>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
-  </ng-container>
-<ng-container *ngIf="!(showAdd)"> <p>Aucune formation disponible.</p> }
+  } @else {
+    <p>Aucune formation disponible.</p>
+  }
 </section>

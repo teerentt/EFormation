@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SessionService } from './sessions.service';
-import { FormationService } from '../gestion-formations/formation.service';
 import { InscriptionForm } from '../../public/inscription-form/inscription-form';
+import { Session } from '../../models/session.model';
 
 @Component({
   selector: 'app-gestion-sessions',
@@ -12,24 +12,28 @@ import { InscriptionForm } from '../../public/inscription-form/inscription-form'
   styleUrls: ['./gestion-sessions.css'],
 })
 export class GestionSessions {
-  sessions: any[] = [];
-  showing: Record<string, boolean> = {};
+  sessions = signal<Session[]>([]);
+  showing = signal<Record<string, boolean>>({});
 
-  constructor(private sessionService: SessionService, private formationService: FormationService) {
+  constructor(private sessionService: SessionService) {
     this.load();
   }
 
   load(): void {
-    this.sessions = this.sessionService.getAllSessions();
+    this.sessions.set(this.sessionService.getAllSessions());
   }
 
   toggleCandidates(sessionId: string): void {
-    this.showing[sessionId] = !this.showing[sessionId];
+    const current = this.showing();
+    this.showing.set({
+      ...current,
+      [sessionId]: !current[sessionId],
+    });
   }
 
   registerFor(sessionId: string, email: string): void {
     const ok = this.sessionService.registerCandidate(sessionId, email);
-    alert(ok ? 'Inscription réussie' : 'Impossible de s\'inscrire (déjà inscrit ou session complète)');
+    alert(ok ? 'Inscription rAcussie' : 'Impossible de s\'inscrire (dAcjA� inscrit ou session complA"te)');
     this.load();
   }
 }

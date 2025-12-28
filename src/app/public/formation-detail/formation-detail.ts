@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Formation } from '../../models/formations.model';
@@ -15,10 +15,10 @@ import { InscriptionForm } from '../inscription-form/inscription-form';
   styleUrls: ['./formation-detail.css'],
 })
 export class PublicFormationDetail implements OnInit {
-  formation?: Formation;
-  sessions: Session[] = [];
-  registrationMessage: Record<string, string> = {};
-  registrationStatus: Record<string, 'success' | 'error'> = {};
+  formation = signal<Formation | null>(null);
+  sessions = signal<Session[]>([]);
+  registrationMessage = signal<Record<string, string>>({});
+  registrationStatus = signal<Record<string, 'success' | 'error'>>({});
 
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +29,8 @@ export class PublicFormationDetail implements OnInit {
   ngOnInit(): void {
     const formationId = this.route.snapshot.paramMap.get('id');
     if (formationId) {
-      this.formation = this.formationService.getFormationById(formationId);
-      this.sessions = this.sessionService.getSessionsByFormation(formationId);
+      this.formation.set(this.formationService.getFormationById(formationId));
+      this.sessions.set(this.sessionService.getSessionsByFormation(formationId));
     }
   }
 
@@ -41,13 +41,28 @@ export class PublicFormationDetail implements OnInit {
   onRegister(session: Session, email: string): void {
     const success = this.sessionService.registerCandidate(session.id, email);
     if (success) {
-      this.registrationMessage[session.id] = 'Inscription confirmée !';
-      this.registrationStatus[session.id] = 'success';
-      this.sessions = this.sessionService.getSessionsByFormation(session.formationId);
+      this.registrationMessage.set({
+        ...this.registrationMessage(),
+        [session.id]: 'Inscription confirmAce !',
+      });
+      this.registrationStatus.set({
+        ...this.registrationStatus(),
+        [session.id]: 'success',
+      });
+      this.sessions.set(this.sessionService.getSessionsByFormation(session.formationId));
     } else {
-      this.registrationMessage[session.id] =
-        "Impossible d'inscrire ce candidat (session complète ou email déjà utilisé).";
-      this.registrationStatus[session.id] = 'error';
+      this.registrationMessage.set({
+        ...this.registrationMessage(),
+        [session.id]:
+          "Impossible d'inscrire ce candidat (session complA\"te ou email dAcjA� utilisAc).",
+      });
+      this.registrationStatus.set({
+        ...this.registrationStatus(),
+        [session.id]: 'error',
+      });
     }
   }
 }
+
+
+

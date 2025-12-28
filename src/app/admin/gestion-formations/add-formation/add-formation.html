@@ -14,9 +14,9 @@
         [(ngModel)]="titre"
         #titreInput="ngModel"
       />
-      <div *ngIf="titreInput.invalid && (titreInput.dirty || titreInput.touched)">
-        <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
-      </div>
+      @if (titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
+        <div class="invalid-feedback">Le titre est requis (min 3 caractA"res).</div>
+      }
     </div>
     <div>
       <label for="description" class="form-label">Description</label>
@@ -29,12 +29,12 @@
         [(ngModel)]="description"
         #descriptionInput="ngModel"
       ></textarea>
-      <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)">
+      @if (descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)) {
         <div class="invalid-feedback">La description est requise.</div>
-      </div>
+      }
     </div>
     <div>
-      <label for="heures" class="form-label">Durée (heures)</label>
+      <label for="heures" class="form-label">DurAce (heures)</label>
       <input
         type="number"
         class="form-control"
@@ -45,20 +45,20 @@
         [(ngModel)]="heures"
         #heuresInput="ngModel"
       />
-      <div *ngIf="heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)">
-        <div class="invalid-feedback">Indiquez une durée valide.</div>
-      </div>
+      @if (heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
+        <div class="invalid-feedback">Indiquez une durAce valide.</div>
+      }
     </div>
     <div>
       <label for="difficulte" class="form-label">Niveau</label>
       <select class="form-select" id="difficulte" name="difficulte" [(ngModel)]="difficulte">
-        <option value="débutant">Débutant</option>
-        <option value="intermédiaire">Intermédiaire</option>
-        <option value="avancé">Avancé</option>
+        <option value="dAcbutant">DAcbutant</option>
+        <option value="intermAcdiaire">IntermAcdiaire</option>
+        <option value="avancAc">AvancAc</option>
       </select>
     </div>
     <div>
-      <label for="tags" class="form-label">Tags (séparés par des virgules)</label>
+      <label for="tags" class="form-label">Tags (sAcparAcs par des virgules)</label>
       <input
         type="text"
         class="form-control"
@@ -68,7 +68,7 @@
       />
     </div>
     <div>
-      <label for="categories" class="form-label">Catégories (ids séparés par des virgules)</label>
+      <label for="categories" class="form-label">CatAcgories (ids sAcparAcs par des virgules)</label>
       <input
         type="text"
         class="form-control"

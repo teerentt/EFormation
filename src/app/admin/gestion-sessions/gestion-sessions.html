@@ -2,19 +2,19 @@
   <h2>Gestion des sessions</h2>
   <p>Liste des sessions</p>
 
-  <ng-container *ngIf="sessions.length">
+  @if (sessions.length > 0) {
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
           <th>Formation</th>
-          <th>Période</th>
+          <th>PAcriode</th>
           <th>Inscrits</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        @for (let s of sessions) {
+        @for (s of sessions; track s.id) {
           <tr>
             <td>{{ s.id }}</td>
             <td>{{ s.formationId }}</td>
@@ -27,22 +27,28 @@
             </td>
           </tr>
 
-          <ng-container *ngIf="showing[s.id]">
+          @if (showing[s.id]) {
             <tr>
               <td colspan="5">
-                <ng-container *ngIf="s.candidatsInscrits.length">
-                <ul>
-                  @for (let c of s.candidatsInscrits) { <li>{{ c }}</li> }
-                </ul>
-              </ng-container>
-<ng-container *ngIf="!(sessions.length)"> <p>Aucun candidat inscrit.</p> }
-              <hr />
-              <p><strong>Test d'inscription (admin)</strong></p>
-              <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
-            </td>
-          </tr></ng-container>
+                @if (s.candidatsInscrits.length) {
+                  <ul>
+                    @for (c of s.candidatsInscrits; track c) {
+                      <li>{{ c }}</li>
+                    }
+                  </ul>
+                } @else {
+                  <p>Aucun candidat inscrit.</p>
+                }
+                <hr />
+                <p><strong>Test d'inscription (admin)</strong></p>
+                <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
+              </td>
+            </tr>
+          }
+        }
       </tbody>
     </table>
-  </ng-container>
-<ng-container *ngIf="true"> <p>Aucune session disponible.</p> }
+  } @else {
+    <p>Aucune session disponible.</p>
+  }
 </section>
