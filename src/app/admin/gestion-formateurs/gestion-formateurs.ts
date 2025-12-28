@@ -29,7 +29,7 @@ export class GestionFormateurs implements OnInit {
     );
   });
 
-  constructor(private formateurService: FormateursService) {}
+  constructor(private formateurService: FormateursService) { }
 
   ngOnInit(): void {
     this._formateurs.set(this.formateurService.getFormateurs());

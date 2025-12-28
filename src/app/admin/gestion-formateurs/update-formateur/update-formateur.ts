@@ -23,7 +23,7 @@ export class UpdateFormateur implements OnInit {
   cv = '';
   specialite = '';
 
-  constructor(private formateursService: FormateursService) {}
+  constructor(private formateursService: FormateursService) { }
   ngOnInit(): void {
     this.nom = this.formateurInitial.nom;
     this.prenom = this.formateurInitial.prenom;
@@ -33,11 +33,11 @@ export class UpdateFormateur implements OnInit {
     this.cv = this.formateurInitial.cv;
     this.specialite = (this.formateurInitial.specialite || []).join(',');
   }
-  
+
   onHideDialog(): void {
     this.hideDialogEvent.emit(false);
   }
-   onSubmit(): void {
+  onSubmit(): void {
     if (!this.formateurInitial) {
       return;
     }
@@ -47,14 +47,14 @@ export class UpdateFormateur implements OnInit {
       prenom: this.prenom,
       email: this.email,
       cin: this.cin,
-       phone: this.phone ?? 0,
+      phone: this.phone ?? 0,
       cv: this.cv,
-       specialite: this.specialite
+      specialite: this.specialite
         .split(',')
         .map((item) => item.trim())
         .filter(Boolean),
     };
-     this.formateursService.updateFormateur(updatedFormateur);
+    this.formateursService.updateFormateur(updatedFormateur);
     this.onHideDialog();
   }
 }

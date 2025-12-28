@@ -1,23 +1,17 @@
 @if (showUpdateDialog() && formateurSelected()) {
-  <app-update-formateur
-    (hideDialogEvent)="onHideUpdateDialog($event)"
-    [formateurInitial]="formateurSelected()!"
-  ></app-update-formateur>
+<app-update-formateur (hideDialogEvent)="onHideUpdateDialog($event)"
+  [formateurInitial]="formateurSelected()!"></app-update-formateur>
 }
 @if (showAddDialog()) {
-  <app-add-formateur (hideDialogEvent)="onHideAddDialog($event)"></app-add-formateur>
+<app-add-formateur (hideDialogEvent)="onHideAddDialog($event)"></app-add-formateur>
 }
 <div class="container mt-5 mb-5">
   <div class="card admin-card">
     <div class="card-header d-flex align-items-center justify-content-between">
       <h1 class="mb-0">Gestion des formateurs</h1>
       <div class="toolbar d-flex align-items-center">
-        <input
-          type="search"
-          class="form-control search-input"
-          placeholder="Rechercher un formateur..."
-          (input)="onSearch($event.target.value)"
-        />
+        <input type="search" class="form-control search-input" placeholder="Rechercher un formateur..."
+          (input)="onSearch($event.target.value)" />
         <button type="button" (click)="onShowAddDialog()" class="btn btn-primary ms-3">
           <i class="bi bi-plus"></i> Ajouter
         </button>
@@ -40,28 +34,28 @@
           </thead>
           <tbody>
             @for (formateur of filteredFormateurs(); track formateur.id) {
-              <tr>
-                <th scope="row">{{ formateur.id }}</th>
-                <td>{{ formateur.nom }}</td>
-                <td>{{ formateur.prenom }}</td>
-                <td>{{ formateur.email }}</td>
-                <td>{{ formateur.phone }}</td>
-                <td>{{ formateur.cin }}</td>
-                <td>
-                  @for (skill of formateur.specialite || []; track skill) {
-                    <span class="badge rounded-pill bg-info"> {{ skill }} </span>
-                  }
-                </td>
-                <td>
-                  <button (click)="onShowUpdateDialog(formateur)" class="btn btn-outline-primary">
-                    Modifier
-                  </button>
+            <tr>
+              <th scope="row">{{ formateur.id }}</th>
+              <td>{{ formateur.nom }}</td>
+              <td>{{ formateur.prenom }}</td>
+              <td>{{ formateur.email }}</td>
+              <td>{{ formateur.phone }}</td>
+              <td>{{ formateur.cin }}</td>
+              <td>
+                @for (skill of formateur.specialite || []; track skill) {
+                <span class="badge rounded-pill bg-info"> {{ skill }} </span>
+                }
+              </td>
+              <td>
+                <button (click)="onShowUpdateDialog(formateur)" class="btn btn-outline-primary">
+                  Modifier
+                </button>
 
-                  <button (click)="removeInstructor(formateur.id)" class="btn btn-outline-danger">
-                    Supprimer
-                  </button>
-                </td>
-              </tr>
+                <button (click)="removeInstructor(formateur.id)" class="btn btn-outline-danger">
+                  Supprimer
+                </button>
+              </td>
+            </tr>
             }
           </tbody>
         </table>

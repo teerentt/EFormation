@@ -7,4 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './admin-space.html',
   styleUrls: ['./admin-space.css'],
 })
-export class AdminSpace {}
+export class AdminSpace { }

@@ -5,84 +5,50 @@
     <div class="d-flex gap-4">
       <div>
         <label for="fName" class="form-label">Nom</label>
-        <input
-          type="text"
-          class="form-control"
-          id="fName"
-          name="fName"
-          placeholder="Entrez le nom"
-          required
-          minlength="3"
-          [(ngModel)]="nom"
-          #enteredFName="ngModel"
-        />
+        <input type="text" class="form-control" id="fName" name="fName" placeholder="Entrez le nom" required
+          minlength="3" [(ngModel)]="nom" #enteredFName="ngModel" />
         @if (enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)) {
-          @if (enteredFName.hasError('required')) {
-            <div class="invalid-feedback">Ce champ est requis.</div>
-          }
-          @if (enteredFName.hasError('minlength')) {
-            <div class="invalid-feedback">Le nom doit contenir au moins 3 caract&egrave;res.</div>
-          }
+        @if (enteredFName.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis.</div>
+        }
+        @if (enteredFName.hasError('minlength')) {
+        <div class="invalid-feedback">Le nom doit contenir au moins 3 caract&egrave;res.</div>
+        }
         }
       </div>
       <div>
         <label for="lName" class="form-label">Pr&eacute;nom</label>
-        <input
-          type="text"
-          class="form-control"
-          id="lName"
-          name="lName"
-          placeholder="Entrez le pr&eacute;nom"
-          required
-          minlength="3"
-          [(ngModel)]="prenom"
-          #enteredLName="ngModel"
-        />
+        <input type="text" class="form-control" id="lName" name="lName" placeholder="Entrez le pr&eacute;nom" required
+          minlength="3" [(ngModel)]="prenom" #enteredLName="ngModel" />
         @if (enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
-          @if (enteredLName.hasError('required')) {
-            <div class="invalid-feedback">Ce champ est requis.</div>
-          }
-          @if (enteredLName.hasError('minlength')) {
-            <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
-          }
+        @if (enteredLName.hasError('required')) {
+        <div class="invalid-feedback">Ce champ est requis.</div>
+        }
+        @if (enteredLName.hasError('minlength')) {
+        <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
+        }
         }
       </div>
     </div>
 
     <div>
       <label for="skills" class="form-label mt-2">Comp&eacute;tences</label>
-      <input
-        type="text"
-        class="form-control"
-        id="skills"
-        name="skills"
-        required
-        placeholder="Entrez les comp&eacute;tences"
-        [(ngModel)]="specialite"
-        #enteredSkills="ngModel"
-      />
+      <input type="text" class="form-control" id="skills" name="skills" required
+        placeholder="Entrez les comp&eacute;tences" [(ngModel)]="specialite" #enteredSkills="ngModel" />
       @if (enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)) {
-        @if (enteredSkills.hasError('required')) {
-          <div class="invalid-feedback">Ce champ est requis.</div>
-        }
+      @if (enteredSkills.hasError('required')) {
+      <div class="invalid-feedback">Ce champ est requis.</div>
+      }
       }
     </div>
     <div>
       <label for="cv" class="form-label mt-2">CV</label>
-      <input
-        type="text"
-        class="form-control"
-        id="cv"
-        name="cv"
-        required
-        placeholder="Entrez le CV"
-        [(ngModel)]="cv"
-        #enteredCv="ngModel"
-      />
+      <input type="text" class="form-control" id="cv" name="cv" required placeholder="Entrez le CV" [(ngModel)]="cv"
+        #enteredCv="ngModel" />
       @if (enteredCv.invalid && (enteredCv.dirty || enteredCv.touched)) {
-        @if (enteredCv.hasError('required')) {
-          <div class="invalid-feedback">Ce champ est requis.</div>
-        }
+      @if (enteredCv.hasError('required')) {
+      <div class="invalid-feedback">Ce champ est requis.</div>
+      }
       }
     </div>
 

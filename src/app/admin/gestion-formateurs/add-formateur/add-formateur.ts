@@ -21,7 +21,7 @@ export class AddFormateur {
   cv = '';
   specialite = '';
 
-  constructor(private formateursService: FormateursService) {}
+  constructor(private formateursService: FormateursService) { }
   onHideDialog(): void {
     this.hideDialogEvent.emit(false);
   }

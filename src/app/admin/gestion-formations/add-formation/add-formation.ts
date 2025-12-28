@@ -21,7 +21,7 @@ export class AddFormation {
   categories = '';
   programPdf = '';
 
-  constructor(private formationService: FormationService) {}
+  constructor(private formationService: FormationService) { }
 
   onHideDialog(): void {
     this.hideDialogEvent.emit(false);
