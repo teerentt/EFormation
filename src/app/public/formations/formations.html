@@ -9,25 +9,21 @@
   />
 </section>
 
-@if(filteredFormations.length > 0) {
-<div class="row g-3">
-  @for(formation of filteredFormations; track formation.id) {
-  <div class="col-md-4">
+<div *ngIf="filteredFormations.length > 0; else noResults" class="row g-3">
+  <div class="col-md-4" *ngFor="let formation of filteredFormations">
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">{{ formation.titre }}</h5>
         <p class="card-text">{{ formation.description }}</p>
         <div class="mb-2">
-          @for(tag of formation.tags; track tag) {
-          <span class="badge bg-info text-dark me-1">{{ tag }}</span>
-          }
+          <span class="badge bg-info text-dark me-1" *ngFor="let tag of formation.tags">{{ tag }}</span>
         </div>
         <a class="btn btn-outline-primary" [routerLink]="['/formations', formation.id]">Voir détails</a>
       </div>
     </div>
   </div>
-  }
 </div>
-} @else {
-<p>Aucune formation ne correspond à votre recherche.</p>
-}
+
+<ng-template #noResults>
+  <p>Aucune formation ne correspond à votre recherche.</p>
+</ng-template>

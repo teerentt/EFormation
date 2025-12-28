@@ -12,7 +12,7 @@ import { InscriptionForm } from '../inscription-form/inscription-form';
   standalone: true,
   imports: [CommonModule, RouterLink, InscriptionForm],
   templateUrl:  './formation-detail.html',
-  styleUrl: './formation-detail.css',
+  styleUrls: ['./formation-detail.css'],
 })
 export class PublicFormationDetail implements OnInit {
   formation?: Formation;

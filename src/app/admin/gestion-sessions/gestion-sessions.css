@@ -1,0 +1,3 @@
+/* Gestion sessions */
+.session-card { border:1px solid var(--border); padding: .9rem; border-radius:8px; background:var(--surface); box-shadow:var(--shadow-sm); margin-bottom: .75rem; }
+.session-meta { color: var(--muted); font-size: .92rem; }

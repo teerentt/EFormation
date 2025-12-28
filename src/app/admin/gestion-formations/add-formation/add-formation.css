@@ -1,0 +1,10 @@
+/* Add Formation dialog styles */
+form { max-width: 720px; margin: 0 auto; }
+form .form-label { font-weight:600; }
+.dialog-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,0.35); }
+dialog { border: none; border-radius: 10px; padding: 1rem; box-shadow: 0 12px 30px rgba(2,6,23,0.12); width: 95%; max-width: 760px; }
+.actions { display:flex; justify-content:flex-end; gap:.5rem; margin-top: .75rem; }
+.btn { border-radius: 6px; }
+.btn-primary { background: var(--primary); color: #fff; }
+.form-row { display:flex; gap:.5rem; }
+.form-row .col { flex:1; }

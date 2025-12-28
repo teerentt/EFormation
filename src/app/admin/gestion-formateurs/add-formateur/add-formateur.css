@@ -1,0 +1,11 @@
+/* Add Formateur dialog — simple, readable form */
+form { max-width: 680px; margin: 0; }
+form .form-label { font-weight: 600; font-size: 0.95rem; }
+form input.form-control, form textarea.form-control { border-radius: 6px; padding: .5rem .75rem; }
+form .invalid-feedback { display: block; color: #dc3545; margin-top: .25rem; }
+.backdrop { position: fixed; inset: 0; background: rgba(13,13,13,0.35); }
+dialog { border: none; border-radius: 10px; padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,0.12); width: 95%; max-width: 760px; }
+.actions { display:flex; justify-content:flex-end; gap:.5rem; margin-top: .5rem; }
+.btn { border-radius: 6px; }
+.btn-primary { background:#0b5ed7; color:#fff; border:none; }
+.btn-primary:hover { background:#094aaf; }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Formation } from '../../../models/formations.model';
 import { FormationService } from '../formation.service';
@@ -6,7 +7,7 @@ import { FormationService } from '../formation.service';
 @Component({
   selector: 'app-add-formation',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-formation.html',
   styleUrls: ['./add-formation.css'],
 })

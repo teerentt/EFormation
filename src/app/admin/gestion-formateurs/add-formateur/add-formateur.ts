@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormateursService } from '../formateurs.service';
 import { Formateur } from '../../../models/formateur.model';
 @Component({
   selector: 'app-add-formateur',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-formateur.html',
-  styleUrl: './add-formateur.css',
+  styleUrls: ['./add-formateur.css'],
 })
 export class AddFormateur {
   @Output() hideDialogEvent = new EventEmitter<boolean>();

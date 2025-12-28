@@ -7,7 +7,7 @@ import { Session } from '../../models/session.model';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './inscription-form.html',
-  styleUrl: './inscription-form.css',
+  styleUrls: ['./inscription-form.css'],
 })
 export class InscriptionForm {
   @Input() session!: Session;

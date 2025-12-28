@@ -1,0 +1,6 @@
+/* Formations grid */
+.formations-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.card-formation { padding: .9rem; border-radius: 8px; border:1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-sm); }
+.card-formation h3 { margin:0 0 .5rem 0; font-size: 1.05rem; }
+.card-formation .meta { color: var(--muted); font-size: .9rem; margin-bottom: .5rem; }
+.card-footer { display:flex; justify-content:space-between; gap:.5rem; align-items:center; }

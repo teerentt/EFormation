@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { FormateursService } from '../formateurs.service';
 import { Formateur } from '../../../models/formateur.model';
 
 @Component({
   selector: 'app-update-formateur',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './update-formateur.html',
-  styleUrl: './update-formateur.css',
+  styleUrls: ['./update-formateur.css'],
 })
 export class UpdateFormateur implements OnInit {
   @Input() formateurInitial!: Formateur;

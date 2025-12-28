@@ -1,1 +1,53 @@
-<p>gestion-sessions works!</p>
+<section>
+  <h2>Gestion des sessions</h2>
+  <p>Liste des sessions</p>
+
+  <div *ngIf="sessions.length; else none">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Formation</th>
+          <th>Période</th>
+          <th>Inscrits</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let s of sessions">
+          <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.formationId }}</td>
+            <td>{{ s.dateDebut | date:'shortDate' }} - {{ s.dateFin | date:'shortDate' }}</td>
+            <td>{{ s.candidatsInscrits.length }} / {{ s.maxInscrits }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" (click)="toggleCandidates(s.id)">
+                {{ showing[s.id] ? 'Cacher' : 'Voir' }} candidats
+              </button>
+            </td>
+          </tr>
+
+          <tr *ngIf="showing[s.id]">
+            <td colspan="5">
+              <div *ngIf="s.candidatsInscrits.length; else noCandidates">
+                <ul>
+                  <li *ngFor="let c of s.candidatsInscrits">{{ c }}</li>
+                </ul>
+              </div>
+              <ng-template #noCandidates>
+                <p>Aucun candidat inscrit.</p>
+              </ng-template>
+              <hr />
+              <p><strong>Test d'inscription (admin)</strong></p>
+              <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #none>
+    <p>Aucune session disponible.</p>
+  </ng-template>
+</section>

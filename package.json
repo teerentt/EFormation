@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prestart": "node tools/preprocess-templates.js",
+    "prebuild": "node tools/preprocess-templates.js",
+    "pretest": "node tools/preprocess-templates.js",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

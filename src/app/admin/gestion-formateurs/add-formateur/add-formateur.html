@@ -1,7 +1,8 @@
 <h2>Ajouter un Formateur</h2>
+
 <form (ngSubmit)="onSubmit()" #f="ngForm">
-     <div>
-    <label for="fName" class="form-label">Nom</label>
+  <div>
+    <label for="nom" class="form-label">Nom</label>
     <input
       type="text"
       class="form-control"
@@ -11,18 +12,21 @@
       required
       minlength="3"
       [(ngModel)]="nom"
-      #nom="ngModel"
+      #nomModel="ngModel"
     />
-    <!--Input validator-->
-    @if(nom.invalid && (nom.dirty || nom.touched)) {
-    @if(nom.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } @if(nom.hasError('minlength')) {
-    <div class="invalid-feedback">Le nom doit contenir au moins 3 caractères.</div>
-    } }
+
+    <div *ngIf="nomModel.invalid && (nomModel.dirty || nomModel.touched)">
+      <div *ngIf="nomModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+      <div *ngIf="nomModel.hasError('minlength')" class="invalid-feedback">
+        Le nom doit contenir au moins 3 caractères.
+      </div>
+    </div>
   </div>
+
   <div>
-    <label for="fName" class="form-label">Prénom</label>
+    <label for="prenom" class="form-label">Prénom</label>
     <input
       type="text"
       class="form-control"
@@ -32,16 +36,19 @@
       required
       minlength="3"
       [(ngModel)]="prenom"
-      #prenom="ngModel"
+      #prenomModel="ngModel"
     />
-    <!--Input validator-->
-    @if(prenom.invalid && (prenom.dirty || prenom.touched)) {
-    @if(prenom.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } @if(prenom.hasError('minlength')) {
-    <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
-    } }
+
+    <div *ngIf="prenomModel.invalid && (prenomModel.dirty || prenomModel.touched)">
+      <div *ngIf="prenomModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+      <div *ngIf="prenomModel.hasError('minlength')" class="invalid-feedback">
+        Le prénom doit contenir au moins 3 caractères.
+      </div>
+    </div>
   </div>
+
   <div>
     <label for="email" class="form-label">Email</label>
     <input
@@ -53,18 +60,21 @@
       required
       email
       [(ngModel)]="email"
-      #email="ngModel"
+      #emailModel="ngModel"
     />
-    <!--Input validator-->
-    @if(email.invalid && (email.dirty || email.touched)) {
-    @if(email.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } @if(email.hasError('email')) {
-    <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
-    } }
+
+    <div *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)">
+      <div *ngIf="emailModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+      <div *ngIf="emailModel.hasError('email')" class="invalid-feedback">
+        Veuillez entrer une adresse email valide.
+      </div>
+    </div>
   </div>
+
   <div>
-    <label for="number">Numéro de téléphone</label>
+    <label for="phone">Numéro de téléphone</label>
     <input
       type="number"
       class="form-control"
@@ -73,14 +83,16 @@
       placeholder="Entrez le numéro de téléphone de formateur"
       required
       [(ngModel)]="phone"
-      #phone="ngModel"
+      #phoneModel="ngModel"
     />
-    <!--Input validator-->
-    @if(phone.invalid && (phone.dirty || phone.touched)) {
-    @if(phone.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } }
+
+    <div *ngIf="phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)">
+      <div *ngIf="phoneModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+    </div>
   </div>
+
   <div>
     <label for="cin">CIN</label>
     <input
@@ -92,19 +104,21 @@
       placeholder="Entrez le CIN de formateur"
       required
       [(ngModel)]="cin"
-      #cin="ngModel"
+      #cinModel="ngModel"
     />
-    <!--Input validator-->
-    @if(cin.invalid && (cin.dirty || cin.touched)) {
-    @if(cin.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    }
-    @if(cin.hasError('pattern')) {
-    <div class="invalid-feedback">Le CIN doit contenir exactement 8 chiffres.</div>
-    } }
+
+    <div *ngIf="cinModel.invalid && (cinModel.dirty || cinModel.touched)">
+      <div *ngIf="cinModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+      <div *ngIf="cinModel.hasError('pattern')" class="invalid-feedback">
+        Le CIN doit contenir exactement 8 chiffres.
+      </div>
+    </div>
   </div>
+
   <div>
-    <label for="specialites">Spécialités</label>
+    <label for="specialite">Spécialités</label>
     <input
       type="text"
       class="form-control"
@@ -113,14 +127,16 @@
       placeholder="Entrez les spécialités de formateur (séparées par des virgules)"
       required
       [(ngModel)]="specialite"
-      #specialite="ngModel"
+      #specialiteModel="ngModel"
     />
-    <!--Input validator-->
-    @if(specialite.invalid && (specialite.dirty || specialite.touched)) {
-    @if(specialite.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } }
+
+    <div *ngIf="specialiteModel.invalid && (specialiteModel.dirty || specialiteModel.touched)">
+      <div *ngIf="specialiteModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+    </div>
   </div>
+
   <div>
     <label for="cv">CV</label>
     <input
@@ -131,16 +147,22 @@
       placeholder="Entrez le CV de formateur"
       required
       [(ngModel)]="cv"
-      #cv="ngModel"
+      #cvModel="ngModel"
     />
-    <!--Input validator-->
-    @if(cv.invalid && (cv.dirty || cv.touched)) {
-    @if(cv.hasError('required')) {
-    <div class="invalid-feedback">Ce champ est requis</div>
-    } }
+
+    <div *ngIf="cvModel.invalid && (cvModel.dirty || cvModel.touched)">
+      <div *ngIf="cvModel.hasError('required')" class="invalid-feedback">
+        Ce champ est requis
+      </div>
+    </div>
   </div>
+
   <div>
-    <button type="button" (click)="onHideDialog()" class="btn btn-primary">Cancel</button>
-    <button type="submit" class="btn btn-success" [disabled]="f.invalid">Ajouter</button>
+    <button type="button" (click)="onHideDialog()" class="btn btn-primary">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">
+      Ajouter
+    </button>
   </div>
 </form>

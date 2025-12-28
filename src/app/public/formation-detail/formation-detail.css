@@ -1,0 +1,5 @@
+/* Formation detail */
+.detail-hero { padding: 1rem; border-radius: 8px; background: var(--surface); border:1px solid var(--border); margin-bottom: 1rem; }
+.accordion .accordion-item { border: 1px solid var(--border); border-radius: 6px; margin-bottom: .5rem; }
+.accordion .accordion-button { background: transparent; border: none; font-weight:600; }
+.alert { margin-top: .5rem; }

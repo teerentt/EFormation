@@ -17,12 +17,10 @@
           #enteredFName="ngModel"
         />
   <!--Input validator-->
-        @if(enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)) {
-        @if(enteredFName.hasError('required')) {
-        <div class="invalid-feedback">This field is required</div>
-        } @if(enteredFName.hasError('minlength')) {
-        <div class="invalid-feedback">First name must be at least 3 characters long.</div>
-        } }
+        <div *ngIf="enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)">
+          <div *ngIf="enteredFName.hasError('required')" class="invalid-feedback">This field is required</div>
+          <div *ngIf="enteredFName.hasError('minlength')" class="invalid-feedback">First name must be at least 3 characters long.</div>
+        </div>
       </div>
       <div>
         <label for="lName" class="form-label">Prenom</label>
@@ -37,12 +35,10 @@
           [(ngModel)]="prenom"
           #enteredLName="ngModel"
         />
-        @if(enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
-        @if(enteredLName.hasError('required')) {
-        <div class="invalid-feedback">This field is required</div>
-        } @if(enteredLName.hasError('minlength')) {
-        <div class="invalid-feedback">Last name must be at least 3 characters long.</div>
-        } }
+        <div *ngIf="enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)">
+          <div *ngIf="enteredLName.hasError('required')" class="invalid-feedback">This field is required</div>
+          <div *ngIf="enteredLName.hasError('minlength')" class="invalid-feedback">Last name must be at least 3 characters long.</div>
+        </div>
       </div>
     </div>
 
@@ -58,10 +54,9 @@
         [(ngModel)]="specialite"
         #enteredSkills="ngModel"
       />
-      @if(enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)){
-      @if(enteredSkills.hasError('required')) {
-      <div class="invalid-feedback">This field is required</div>
-      } }
+      <div *ngIf="enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)">
+        <div *ngIf="enteredSkills.hasError('required')" class="invalid-feedback">This field is required</div>
+      </div>
     </div>
       <div>
       <label for="cv" class="form-label mt-2">CV</label>
@@ -75,10 +70,9 @@
         [(ngModel)]="cv"
         #enteredCv="ngModel"
       />
-      @if(enteredCv.invalid && (enteredCv.dirty || enteredCv.touched)){
-      @if(enteredCv.hasError('required')) {
-      <div class="invalid-feedback">This field is required</div>
-      } }
+      <div *ngIf="enteredCv.invalid && (enteredCv.dirty || enteredCv.touched)">
+        <div *ngIf="enteredCv.hasError('required')" class="invalid-feedback">This field is required</div>
+      </div>
     </div>
 
     <div class="actions mt-3 d-flex justify-content-end gap-3">

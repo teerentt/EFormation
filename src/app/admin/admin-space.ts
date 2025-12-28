@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './admin-space.html',
-  styleUrl: './admin-space.css',
+  styleUrls: ['./admin-space.css'],
 })
 export class AdminSpace {}

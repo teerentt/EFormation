@@ -1,21 +1,23 @@
-@if(showUpdateDialog && formateurSelected) {
-  <app-update-formateur
-  (hideDialogEvent)="onHideUpdateDialog($event)"
-  [formateurInitial]="formateurSelected"
-></app-update-formateur>
-} @if(showAddDialog) {
-<app-add-formateur (hideDialogEvent)="onHideAddDialog($event)"></app-add-formateur>
-}
+<ng-container *ngIf="showUpdateDialog() && formateurSelected()">
+  <app-update-formateur (hideDialogEvent)="onHideUpdateDialog($event)" [formateurInitial]="formateurSelected()!"></app-update-formateur>
+</ng-container>
+<ng-container *ngIf="showAddDialog()">
+  <app-add-formateur (hideDialogEvent)="onHideAddDialog($event)"></app-add-formateur>
+</ng-container>
 <div class="container mt-5 mb-5">
-  <h1>Manage Instructors</h1>
-  <div class="col">
-    <div class="col text-end">
-      <button type="button" (click)="onShowAddDialog()" class="btn btn-outline-warning btn-md mb-3">
-        <i class="bi bi-plus"></i> Add instructor
-      </button>
+  <div class="card admin-card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h1 class="mb-0">Gestion des formateurs</h1>
+      <div class="toolbar d-flex align-items-center">
+        <input type="search" class="form-control search-input" placeholder="Rechercher un formateur..." (input)="onSearch($event.target.value)" />
+        <button type="button" (click)="onShowAddDialog()" class="btn btn-primary ms-3">
+          <i class="bi bi-plus"></i> Ajouter
+        </button>
+      </div>
     </div>
-  </div>
-  <table class="table display" id="example">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped" id="example">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -29,7 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      @for(formateur of formateurs; track formateur.id){
+      <ng-container *ngFor="let formateur of filteredFormateurs()">
         <tr>
            <th scope="row">{{ formateur.id }}</th>
         <td>{{ formateur.nom }}</td>
@@ -38,8 +40,9 @@
         <td>{{ formateur.phone }}</td>
         <td>{{ formateur.cin }}</td>
         <td>
-          @for(skill of formateur.specialite; track skill) {
-          <span class="badge rounded-pill bg-info"> {{ skill }} </span>}
+          <ng-container *ngFor="let skill of formateur.specialite || []">
+            <span class="badge rounded-pill bg-info"> {{ skill }} </span>
+</ng-container>
         </td>
         <td>
                     <button (click)="onShowUpdateDialog(formateur)" class="btn btn-outline-primary">
@@ -51,7 +54,10 @@
           </button>
         </td>
       </tr>
-      }
+</ng-container>
     </tbody>
   </table>
+      </div>
+    </div>
+  </div>
 </div>

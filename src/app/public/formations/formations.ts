@@ -10,7 +10,7 @@ import { FormationService } from '../../admin/gestion-formations/formation.servi
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './formations.html',
-  styleUrl: './formations.css',
+  styleUrls: ['./formations.css'],
 })
 export class PublicFormations implements OnInit {
   formations: Formation[] = [];

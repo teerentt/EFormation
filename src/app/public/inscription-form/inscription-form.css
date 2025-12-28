@@ -1,0 +1,4 @@
+/* Inscription form style */
+.inscription-form { display:flex; gap:.5rem; align-items:center; }
+.inscription-form input[type="email"] { max-width: 320px; }
+.inscription-form button { padding: .45rem .75rem; }

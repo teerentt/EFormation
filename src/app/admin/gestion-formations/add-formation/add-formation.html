@@ -14,9 +14,9 @@
         [(ngModel)]="titre"
         #titreInput="ngModel"
       />
-      @if(titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
-      <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
-      }
+      <div *ngIf="titreInput.invalid && (titreInput.dirty || titreInput.touched)">
+        <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
+      </div>
     </div>
     <div>
       <label for="description" class="form-label">Description</label>
@@ -29,9 +29,9 @@
         [(ngModel)]="description"
         #descriptionInput="ngModel"
       ></textarea>
-      @if(descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)) {
-      <div class="invalid-feedback">La description est requise.</div>
-      }
+      <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)">
+        <div class="invalid-feedback">La description est requise.</div>
+      </div>
     </div>
     <div>
       <label for="heures" class="form-label">Durée (heures)</label>
@@ -45,9 +45,9 @@
         [(ngModel)]="heures"
         #heuresInput="ngModel"
       />
-      @if(heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
-      <div class="invalid-feedback">Indiquez une durée valide.</div>
-      }
+      <div *ngIf="heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)">
+        <div class="invalid-feedback">Indiquez une durée valide.</div>
+      </div>
     </div>
     <div>
       <label for="difficulte" class="form-label">Niveau</label>

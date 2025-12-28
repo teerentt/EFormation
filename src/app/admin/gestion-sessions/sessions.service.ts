@@ -8,7 +8,7 @@ export class SessionService {
   private sessionsList = signal<Session[]>([
     {
       id: 'S1',
-      formationId: '1',
+      formationId: 'F-101',
       formateurIds: ['F1'],
       candidatsInscrits: ['candidat1@example.com'],
       dateDebut: new Date('2024-11-10'),
@@ -18,7 +18,7 @@ export class SessionService {
     },
     {
       id: 'S2',
-      formationId: '1',
+      formationId: 'F-101',
       formateurIds: ['F2'],
       candidatsInscrits: [],
       dateDebut: new Date('2025-01-05'),
@@ -28,7 +28,7 @@ export class SessionService {
     },
     {
       id: 'S3',
-      formationId: '2',
+      formationId: 'F-202',
       formateurIds: ['F3'],
       candidatsInscrits: ['analyste@example.com'],
       dateDebut: new Date('2024-12-01'),
@@ -38,7 +38,7 @@ export class SessionService {
     },
     {
       id: 'S4',
-      formationId: '3',
+      formationId: 'F-303',
       formateurIds: ['F4', 'F5'],
       candidatsInscrits: [],
       dateDebut: new Date('2025-02-10'),
@@ -50,6 +50,10 @@ export class SessionService {
 
   getSessionsByFormation(formationId: string): Session[] {
     return this.sessionsList().filter((session) => session.formationId === formationId);
+  }
+
+  getAllSessions(): Session[] {
+    return this.sessionsList();
   }
 
   registerCandidate(sessionId: string, email: string): boolean {

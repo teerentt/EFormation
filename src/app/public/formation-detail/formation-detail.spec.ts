@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormationDetail } from './formation-detail';
+import { PublicFormationDetail } from './formation-detail';
 
-describe('FormationDetail', () => {
-  let component: FormationDetail;
-  let fixture: ComponentFixture<FormationDetail>;
+describe('PublicFormationDetail', () => {
+  let component: PublicFormationDetail;
+  let fixture: ComponentFixture<PublicFormationDetail>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormationDetail]
+      imports: [PublicFormationDetail]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormationDetail);
+    fixture = TestBed.createComponent(PublicFormationDetail);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

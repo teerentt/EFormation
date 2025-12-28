@@ -1,11 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
-  <a class="navbar-brand fw-bold" routerLink="/">E-Formation ISET</a>
-  <div class="navbar-nav">
-    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      Accueil
-    </a>
-    <a class="nav-link" routerLink="/formations" routerLinkActive="active">Formations</a>
-    <a class="nav-link" routerLink="/admin">Espace Admin</a>
+<nav class="app-navbar">
+  <div class="nav-inner container">
+    <a class="navbar-brand header-brand" routerLink="/">E-Formation ISET</a>
+
+    <button class="menu-toggle btn-ghost" aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+      <span class="hamburger" [class.open]="menuOpen"></span>
+    </button>
+
+    <div class="nav-links" [class.open]="menuOpen">
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+      <a class="nav-link" routerLink="/formations" routerLinkActive="active">Formations</a>
+      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Espace Admin</a>
+    </div>
   </div>
 </nav>
 
