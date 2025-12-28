@@ -4,7 +4,7 @@ export interface Formation {
   description: string;
   heures: number;
   programPdf?: string;
-  difficulté: 'débutant' | 'intermédiaire' | 'avancé';
+  difficulte: 'débutant' | 'intermédiaire' | 'avancé';
   tags: string[];
   categories: number[];
   sessions: string[];

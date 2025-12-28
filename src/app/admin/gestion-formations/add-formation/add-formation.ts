@@ -13,7 +13,7 @@ export class AddFormation {
     titre: '',
     description: '',
     heures: 0,
-    difficulté: 'débutant',
+    difficulte: 'débutant',
     tags: [],
     categories: [],
     sessions: [],

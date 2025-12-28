@@ -1,0 +1,43 @@
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 64px);
+  background: #f7f9fc;
+}
+
+.admin-menu {
+  background: #101828;
+  color: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-menu h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.admin-menu nav {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-menu a {
+  color: #d0d5dd;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.admin-menu a.active,
+.admin-menu a:hover {
+  background: #1d2939;
+  color: #fff;
+}
+
+.admin-content {
+  padding: 24px 32px;
+}
