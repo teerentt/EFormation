@@ -3,40 +3,37 @@
   <p>Liste des formations enregistrées (admin)</p>
   <button class="btn btn-primary mb-3" (click)="onAdd()">Ajouter une formation</button>
 
-  <app-add-formation *ngIf="showAdd" (hideDialogEvent)="onHideAdd()"></app-add-formation>
-  <app-update-formation
-    *ngIf="showUpdate"
-    [formation]="selectedFormation"
-    (hideDialogEvent)="onHideUpdate()"
-  ></app-update-formation>
-
-  <div *ngIf="formations.length; else empty">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Titre</th>
-          <th>Niveau</th>
-          <th>Heures</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let f of formations">
-          <td>{{ f.id }}</td>
-          <td>{{ f.titre }}</td>
-          <td>{{ f.difficulte }}</td>
-          <td>{{ f.heures }}</td>
-          <td>
-            <button class="btn btn-sm btn-outline-secondary me-1" (click)="onEdit(f)">Modifier</button>
-            <button class="btn btn-sm btn-danger" (click)="onDelete(f.id)">Supprimer</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <ng-template #empty>
-    <p>Aucune formation disponible.</p>
-  </ng-template>
+  <ng-container *ngIf="showAdd">
+    <app-add-formation (hideDialogEvent)="onHideAdd()"></app-add-formation></ng-container>
+  <ng-container *ngIf="showUpdate">
+    <app-update-formation [formation]="selectedFormation" (hideDialogEvent)="onHideUpdate()"></app-update-formation></ng-container>
+  <ng-container *ngIf="formations.length">
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Niveau</th>
+            <th>Heures</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (let f of formations) {
+            <tr>
+              <td>{{ f.id }}</td>
+              <td>{{ f.titre }}</td>
+              <td>{{ f.difficulte }}</td>
+              <td>{{ f.heures }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline-secondary me-1" (click)="onEdit(f)">Modifier</button>
+                <button class="btn btn-sm btn-danger" (click)="onDelete(f.id)">Supprimer</button>
+              </td>
+            </tr></ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+<ng-container *ngIf="!(showAdd)"> <p>Aucune formation disponible.</p> }
 </section>

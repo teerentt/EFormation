@@ -2,7 +2,7 @@
   <h2>Gestion des sessions</h2>
   <p>Liste des sessions</p>
 
-  <div *ngIf="sessions.length; else none">
+  <ng-container *ngIf="sessions.length">
     <table class="table">
       <thead>
         <tr>
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let s of sessions">
+        @for (let s of sessions) {
           <tr>
             <td>{{ s.id }}</td>
             <td>{{ s.formationId }}</td>
@@ -27,27 +27,22 @@
             </td>
           </tr>
 
-          <tr *ngIf="showing[s.id]">
-            <td colspan="5">
-              <div *ngIf="s.candidatsInscrits.length; else noCandidates">
+          <ng-container *ngIf="showing[s.id]">
+            <tr>
+              <td colspan="5">
+                <ng-container *ngIf="s.candidatsInscrits.length">
                 <ul>
-                  <li *ngFor="let c of s.candidatsInscrits">{{ c }}</li>
+                  @for (let c of s.candidatsInscrits) { <li>{{ c }}</li> }
                 </ul>
-              </div>
-              <ng-template #noCandidates>
-                <p>Aucun candidat inscrit.</p>
-              </ng-template>
+              </ng-container>
+<ng-container *ngIf="!(sessions.length)"> <p>Aucun candidat inscrit.</p> }
               <hr />
               <p><strong>Test d'inscription (admin)</strong></p>
               <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
             </td>
-          </tr>
-        </ng-container>
+          </tr></ng-container>
       </tbody>
     </table>
-  </div>
-
-  <ng-template #none>
-    <p>Aucune session disponible.</p>
-  </ng-template>
+  </ng-container>
+<ng-container *ngIf="true"> <p>Aucune session disponible.</p> }
 </section>

@@ -10,9 +10,8 @@
     <li><strong>Programme :</strong> {{ formation.programPdf || 'PDF non disponible' }}</li>
   </ul>
   <div class="mb-3">
-    <ng-container *ngFor="let tag of formation.tags">
-    <span class="badge bg-info text-dark me-1">{{ tag }}</span>
-</ng-container>
+    @for (let tag of formation.tags) {
+      <span class="badge bg-info text-dark me-1">{{ tag }}</span></ng-container>
   </div>
 </section>
 
@@ -20,7 +19,7 @@
   <h2>Sessions à venir</h2>
   <ng-container *ngIf="sessions.length > 0">
   <div class="accordion" id="sessionsAccordion">
-    <ng-container *ngFor="let session of sessions">
+    @for (let session of sessions) {
     <div class="accordion-item">
       <h2 class="accordion-header" id="heading-{{ session.id }}">
         <button
@@ -46,33 +45,18 @@
               session.maxInscrits
             }}
           </p>
-            <div *ngIf="isSessionFull(session)">
-              <div class="alert alert-warning">Session complète, inscriptions désactivées.</div>
-            </div>
-            <div *ngIf="!isSessionFull(session)">
-              <app-inscription-form (register)="onRegister(session, $event)"></app-inscription-form>
-            </div>
+          <div *ngIf="isSessionFull(session)">
+            <div class="alert alert-warning">Session complète, inscriptions désactivées.</div></ng-container>
+          <div *ngIf="!isSessionFull(session)">
+            <app-inscription-form (register)="onRegister(session, $event)"></app-inscription-form></ng-container>
           <ng-container *ngIf="registrationMessage[session.id]">
-          <div
-            class="alert mt-3"
-            [class.alert-success]="registrationStatus[session.id] === 'success'"
-            [class.alert-danger]="registrationStatus[session.id] === 'error'"
-          >
-            {{ registrationMessage[session.id] }}
-          </div>
-</ng-container>
+            <div class="alert mt-3" [class.alert-success]="registrationStatus[session.id] === 'success'" [class.alert-danger]="registrationStatus[session.id] === 'error'">{{ registrationMessage[session.id] }}</div></ng-container>
         </div>
       </div>
-    </div>
-</ng-container>
+    </div></ng-container>
   </div>
   </ng-container>
-
-  <ng-template #noSessions>
-    <p>Aucune session programmée pour cette formation.</p>
-  </ng-template>
+<ng-container *ngIf="!(formation)"> <p>Aucune session programmée pour cette formation.</p> }
 </section>
 </ng-container>
-<ng-container *ngIf="!formation">
-  <p>Formation introuvable.</p>
-</ng-container>
+<ng-container *ngIf="true"> <p>Formation introuvable.</p> }

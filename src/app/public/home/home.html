@@ -6,14 +6,3 @@
   </p>
 </section>
 
-<section>
-  <h2>Catégories disponibles</h2>
-  <div *ngIf="categories.length > 0; else none">
-    <div class="d-flex flex-wrap gap-2">
-      <span class="badge bg-primary" *ngFor="let category of categories">Catégorie {{ category }}</span>
-    </div>
-  </div>
-  <ng-template #none>
-    <p>Aucune catégorie n'est disponible pour le moment.</p>
-  </ng-template>
-</section> 

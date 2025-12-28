@@ -16,11 +16,11 @@
     />
 
     <div *ngIf="nomModel.invalid && (nomModel.dirty || nomModel.touched)">
-      <div *ngIf="nomModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="nomModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
-      <div *ngIf="nomModel.hasError('minlength')" class="invalid-feedback">
-        Le nom doit contenir au moins 3 caractères.
+      <div *ngIf="nomModel.hasError('minlength')">
+        <div class="invalid-feedback">Le nom doit contenir au moins 3 caractères.</div>
       </div>
     </div>
   </div>
@@ -40,11 +40,11 @@
     />
 
     <div *ngIf="prenomModel.invalid && (prenomModel.dirty || prenomModel.touched)">
-      <div *ngIf="prenomModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="prenomModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
-      <div *ngIf="prenomModel.hasError('minlength')" class="invalid-feedback">
-        Le prénom doit contenir au moins 3 caractères.
+      <div *ngIf="prenomModel.hasError('minlength')">
+        <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
       </div>
     </div>
   </div>
@@ -64,11 +64,11 @@
     />
 
     <div *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)">
-      <div *ngIf="emailModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="emailModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
-      <div *ngIf="emailModel.hasError('email')" class="invalid-feedback">
-        Veuillez entrer une adresse email valide.
+      <div *ngIf="emailModel.hasError('email')">
+        <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
       </div>
     </div>
   </div>
@@ -87,8 +87,8 @@
     />
 
     <div *ngIf="phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)">
-      <div *ngIf="phoneModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="phoneModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
     </div>
   </div>
@@ -108,11 +108,11 @@
     />
 
     <div *ngIf="cinModel.invalid && (cinModel.dirty || cinModel.touched)">
-      <div *ngIf="cinModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="cinModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
-      <div *ngIf="cinModel.hasError('pattern')" class="invalid-feedback">
-        Le CIN doit contenir exactement 8 chiffres.
+      <div *ngIf="cinModel.hasError('pattern')">
+        <div class="invalid-feedback">Le CIN doit contenir exactement 8 chiffres.</div>
       </div>
     </div>
   </div>
@@ -131,8 +131,8 @@
     />
 
     <div *ngIf="specialiteModel.invalid && (specialiteModel.dirty || specialiteModel.touched)">
-      <div *ngIf="specialiteModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="specialiteModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
     </div>
   </div>
@@ -151,8 +151,8 @@
     />
 
     <div *ngIf="cvModel.invalid && (cvModel.dirty || cvModel.touched)">
-      <div *ngIf="cvModel.hasError('required')" class="invalid-feedback">
-        Ce champ est requis
+      <div *ngIf="cvModel.hasError('required')">
+        <div class="invalid-feedback">Ce champ est requis</div>
       </div>
     </div>
   </div>
