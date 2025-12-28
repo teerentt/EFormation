@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <label for="prenom" class="form-label">Pr&eacute;nom</label>
-    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le pr&eacute;nom du formateur"
+    <label for="prenom" class="form-label">Prénom</label>
+    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom du formateur"
       required minlength="3" [(ngModel)]="prenom" #prenomModel="ngModel" />
 
     @if (prenomModel.invalid && (prenomModel.dirty || prenomModel.touched)) {
@@ -26,7 +26,7 @@
     <div class="invalid-feedback">Ce champ est requis.</div>
     }
     @if (prenomModel.hasError('minlength')) {
-    <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
+    <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
     }
     }
   </div>
@@ -47,9 +47,9 @@
   </div>
 
   <div>
-    <label for="phone" class="form-label">Num&eacute;ro de t&eacute;l&eacute;phone</label>
+    <label for="phone" class="form-label">Numéro de téléphone</label>
     <input type="number" class="form-control" id="phone" name="phone"
-      placeholder="Entrez le num&eacute;ro de t&eacute;l&eacute;phone du formateur" required [(ngModel)]="phone"
+      placeholder="Entrez le numéro de téléphone du formateur" required [(ngModel)]="phone"
       #phoneModel="ngModel" />
 
     @if (phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)) {
@@ -75,9 +75,9 @@
   </div>
 
   <div>
-    <label for="specialite" class="form-label">Sp&eacute;cialit&eacute;s</label>
+    <label for="specialite" class="form-label">Spécialités</label>
     <input type="text" class="form-control" id="specialite" name="specialite"
-      placeholder="Entrez les sp&eacute;cialit&eacute;s du formateur (s&eacute;par&eacute;es par des virgules)" required
+      placeholder="Entrez les spécialités du formateur (séparées par des virgules)" required
       [(ngModel)]="specialite" #specialiteModel="ngModel" />
 
     @if (specialiteModel.invalid && (specialiteModel.dirty || specialiteModel.touched)) {

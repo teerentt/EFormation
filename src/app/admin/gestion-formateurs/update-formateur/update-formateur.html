@@ -1,6 +1,6 @@
 ﻿<div class="backdrop" (click)="onHideDialog()"></div>
 <dialog open>
-  <h2>Mettre &agrave; jour le formateur n&deg; {{ formateurInitial.id }}</h2>
+  <h2>Mettre à jour le formateur n {{ formateurInitial.id }}</h2>
   <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
     <div class="d-flex gap-4">
       <div>
@@ -12,29 +12,29 @@
         <div class="invalid-feedback">Ce champ est requis.</div>
         }
         @if (enteredFName.hasError('minlength')) {
-        <div class="invalid-feedback">Le nom doit contenir au moins 3 caract&egrave;res.</div>
+        <div class="invalid-feedback">Le nom doit contenir au moins 3 caractères.</div>
         }
         }
       </div>
       <div>
-        <label for="lName" class="form-label">Pr&eacute;nom</label>
-        <input type="text" class="form-control" id="lName" name="lName" placeholder="Entrez le pr&eacute;nom" required
+        <label for="lName" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="lName" name="lName" placeholder="Entrez le prénom" required
           minlength="3" [(ngModel)]="prenom" #enteredLName="ngModel" />
         @if (enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
         @if (enteredLName.hasError('required')) {
         <div class="invalid-feedback">Ce champ est requis.</div>
         }
         @if (enteredLName.hasError('minlength')) {
-        <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
+        <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
         }
         }
       </div>
     </div>
 
     <div>
-      <label for="skills" class="form-label mt-2">Comp&eacute;tences</label>
+      <label for="skills" class="form-label mt-2">Compétences</label>
       <input type="text" class="form-control" id="skills" name="skills" required
-        placeholder="Entrez les comp&eacute;tences" [(ngModel)]="specialite" #enteredSkills="ngModel" />
+        placeholder="Entrez les compétences" [(ngModel)]="specialite" #enteredSkills="ngModel" />
       @if (enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)) {
       @if (enteredSkills.hasError('required')) {
       <div class="invalid-feedback">Ce champ est requis.</div>
@@ -56,7 +56,7 @@
       <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
         Annuler
       </button>
-      <button type="submit" class="btn btn-outline-primary">Mettre &agrave; jour</button>
+      <button type="submit" class="btn btn-outline-primary">Mettre à jour</button>
     </div>
   </form>
 </dialog>

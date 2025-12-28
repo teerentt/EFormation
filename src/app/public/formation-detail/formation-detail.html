@@ -39,7 +39,7 @@
             }}
           </p>
           @if (isSessionFull(session)) {
-          <div class="alert alert-warning">Session compl&egrave;te, inscriptions d&eacute;sactiv&eacute;es.</div>
+          <div class="alert alert-warning">Session complète, inscriptions désactivées.</div>
           } @else {
           <app-inscription-form (register)="onRegister(session, $event)"></app-inscription-form>
           }
@@ -55,7 +55,7 @@
     }
   </div>
   } @else {
-  <p>Aucune session programm&eacute;e pour cette formation.</p>
+  <p>Aucune session programmée pour cette formation.</p>
   }
 </section>
 } @else {

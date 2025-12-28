@@ -7,7 +7,7 @@
       <input type="text" class="form-control" id="titre" name="titre" required minlength="3" [(ngModel)]="titre"
         #titreInput="ngModel" />
       @if (titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
-      <div class="invalid-feedback">Le titre est requis (min 3 caract&egrave;res).</div>
+      <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
       }
     </div>
     <div>
@@ -19,27 +19,27 @@
       }
     </div>
     <div>
-      <label for="heures" class="form-label">Dur&eacute;e (heures)</label>
+      <label for="heures" class="form-label">Durée (heures)</label>
       <input type="number" class="form-control" id="heures" name="heures" required min="1" [(ngModel)]="heures"
         #heuresInput="ngModel" />
       @if (heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
-      <div class="invalid-feedback">Indiquez une dur&eacute;e valide.</div>
+      <div class="invalid-feedback">Indiquez une durée valide.</div>
       }
     </div>
     <div>
       <label for="difficulte" class="form-label">Niveau</label>
       <select class="form-select" id="difficulte" name="difficulte" [(ngModel)]="difficulte">
-        <option value="d&eacute;butant">D&eacute;butant</option>
-        <option value="interm&eacute;diaire">Interm&eacute;diaire</option>
-        <option value="avanc&eacute;">Avanc&eacute;</option>
+        <option value="débutant">Débutant</option>
+        <option value="intermédiaire">Intermédiaire</option>
+        <option value="avancé">Avancé</option>
       </select>
     </div>
     <div>
-      <label for="tags" class="form-label">Tags (s&eacute;par&eacute;s par des virgules)</label>
+      <label for="tags" class="form-label">Tags (séparés par des virgules)</label>
       <input type="text" class="form-control" id="tags" name="tags" [(ngModel)]="tags" />
     </div>
     <div>
-      <label for="categories" class="form-label">Cat&eacute;gories (ids s&eacute;par&eacute;s par des virgules)</label>
+      <label for="categories" class="form-label">Catégories (ids séparés par des virgules)</label>
       <input type="text" class="form-control" id="categories" name="categories" [(ngModel)]="categories" />
     </div>
     <div>

@@ -1,6 +1,6 @@
 ﻿<section class="mb-4">
   <h1>Formations disponibles</h1>
-  <p>Recherchez une formation par titre ou par mots cl&eacute;s.</p>
+  <p>Recherchez une formation par titre ou par mots clés.</p>
   <input type="text" class="form-control" placeholder="Rechercher une formation" [ngModel]="searchTerm()"
     (ngModelChange)="searchTerm.set($event)" />
 </section>
@@ -18,12 +18,12 @@
           <span class="badge bg-info text-dark me-1">{{ tag }}</span>
           }
         </div>
-        <a class="btn btn-outline-primary" [routerLink]="['/formations', formation.id]">Voir d&eacute;tails</a>
+        <a class="btn btn-outline-primary" [routerLink]="['/formations', formation.id]">Voir détails</a>
       </div>
     </div>
   </div>
   }
 </div>
 } @else {
-<p>Aucune formation ne correspond &agrave; votre recherche.</p>
+<p>Aucune formation ne correspond à votre recherche.</p>
 }
