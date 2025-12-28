@@ -33,7 +33,7 @@ export class GestionSessions {
 
   registerFor(sessionId: string, email: string): void {
     const ok = this.sessionService.registerCandidate(sessionId, email);
-    alert(ok ? 'Inscription rAcussie' : 'Impossible de s\'inscrire (dAcjA� inscrit ou session complA"te)');
+    alert(ok ? 'Inscription réussie' : 'Impossible de s\'inscrire (déjà inscrit ou session complète)');
     this.load();
   }
 }

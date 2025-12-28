@@ -1,4 +1,4 @@
-<h2>Ajouter un Formateur</h2>
+﻿<h2>Ajouter un formateur</h2>
 
 <form (ngSubmit)="onSubmit()" #f="ngForm">
   <div>
@@ -8,7 +8,7 @@
       class="form-control"
       id="nom"
       name="nom"
-      placeholder="Entrez le nom de formateur"
+      placeholder="Entrez le nom du formateur"
       required
       minlength="3"
       [(ngModel)]="nom"
@@ -17,22 +17,22 @@
 
     @if (nomModel.invalid && (nomModel.dirty || nomModel.touched)) {
       @if (nomModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
       @if (nomModel.hasError('minlength')) {
-        <div class="invalid-feedback">Le nom doit contenir au moins 3 caractA"res.</div>
+        <div class="invalid-feedback">Le nom doit contenir au moins 3 caract&egrave;res.</div>
       }
     }
   </div>
 
   <div>
-    <label for="prenom" class="form-label">PrAcnom</label>
+    <label for="prenom" class="form-label">Pr&eacute;nom</label>
     <input
       type="text"
       class="form-control"
       id="prenom"
       name="prenom"
-      placeholder="Entrez le prAcnom de formateur"
+      placeholder="Entrez le pr&eacute;nom du formateur"
       required
       minlength="3"
       [(ngModel)]="prenom"
@@ -41,10 +41,10 @@
 
     @if (prenomModel.invalid && (prenomModel.dirty || prenomModel.touched)) {
       @if (prenomModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
       @if (prenomModel.hasError('minlength')) {
-        <div class="invalid-feedback">Le prAcnom doit contenir au moins 3 caractA"res.</div>
+        <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
       }
     }
   </div>
@@ -56,7 +56,7 @@
       class="form-control"
       id="email"
       name="email"
-      placeholder="Entrez l'email de formateur"
+      placeholder="Entrez l'email du formateur"
       required
       email
       [(ngModel)]="email"
@@ -65,7 +65,7 @@
 
     @if (emailModel.invalid && (emailModel.dirty || emailModel.touched)) {
       @if (emailModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
       @if (emailModel.hasError('email')) {
         <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
@@ -74,13 +74,13 @@
   </div>
 
   <div>
-    <label for="phone">NumAcro de tAclAcphone</label>
+    <label for="phone" class="form-label">Num&eacute;ro de t&eacute;l&eacute;phone</label>
     <input
       type="number"
       class="form-control"
       id="phone"
       name="phone"
-      placeholder="Entrez le numAcro de tAclAcphone de formateur"
+      placeholder="Entrez le num&eacute;ro de t&eacute;l&eacute;phone du formateur"
       required
       [(ngModel)]="phone"
       #phoneModel="ngModel"
@@ -88,20 +88,20 @@
 
     @if (phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)) {
       @if (phoneModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
     }
   </div>
 
   <div>
-    <label for="cin">CIN</label>
+    <label for="cin" class="form-label">CIN</label>
     <input
       type="text"
       class="form-control"
       id="cin"
       name="cin"
       pattern="[0-9]{8}"
-      placeholder="Entrez le CIN de formateur"
+      placeholder="Entrez le CIN du formateur"
       required
       [(ngModel)]="cin"
       #cinModel="ngModel"
@@ -109,7 +109,7 @@
 
     @if (cinModel.invalid && (cinModel.dirty || cinModel.touched)) {
       @if (cinModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
       @if (cinModel.hasError('pattern')) {
         <div class="invalid-feedback">Le CIN doit contenir exactement 8 chiffres.</div>
@@ -118,13 +118,13 @@
   </div>
 
   <div>
-    <label for="specialite">SpAccialitAcs</label>
+    <label for="specialite" class="form-label">Sp&eacute;cialit&eacute;s</label>
     <input
       type="text"
       class="form-control"
       id="specialite"
       name="specialite"
-      placeholder="Entrez les spAccialitAcs de formateur (sAcparAces par des virgules)"
+      placeholder="Entrez les sp&eacute;cialit&eacute;s du formateur (s&eacute;par&eacute;es par des virgules)"
       required
       [(ngModel)]="specialite"
       #specialiteModel="ngModel"
@@ -132,19 +132,19 @@
 
     @if (specialiteModel.invalid && (specialiteModel.dirty || specialiteModel.touched)) {
       @if (specialiteModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
     }
   </div>
 
   <div>
-    <label for="cv">CV</label>
+    <label for="cv" class="form-label">CV</label>
     <input
       type="text"
       class="form-control"
       id="cv"
       name="cv"
-      placeholder="Entrez le CV de formateur"
+      placeholder="Entrez le CV du formateur"
       required
       [(ngModel)]="cv"
       #cvModel="ngModel"
@@ -152,14 +152,14 @@
 
     @if (cvModel.invalid && (cvModel.dirty || cvModel.touched)) {
       @if (cvModel.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
+        <div class="invalid-feedback">Ce champ est requis.</div>
       }
     }
   </div>
 
   <div>
     <button type="button" (click)="onHideDialog()" class="btn btn-primary">
-      Cancel
+      Annuler
     </button>
     <button type="submit" class="btn btn-success" [disabled]="f.invalid">
       Ajouter

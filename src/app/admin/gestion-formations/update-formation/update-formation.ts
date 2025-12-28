@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Formation } from '../../../models/formations.model';
@@ -53,4 +53,4 @@ export class UpdateFormation {
     this.formationService.updateFormation(updated);
     this.onHideDialog();
   }
-} 
+}

@@ -1,4 +1,4 @@
-@if (formation) {
+﻿@if (formation) {
   <h4>Modifier la formation {{ formation.titre }}</h4>
   <form (ngSubmit)="onSubmit()">
     <div class="mb-2">
@@ -15,22 +15,22 @@
         <input type="number" class="form-control" [(ngModel)]="heures" name="heures" />
       </div>
       <div class="col">
-        <label class="form-label">DifficultAc</label>
+        <label class="form-label">Difficult&eacute;</label>
         <select class="form-select" [(ngModel)]="difficulte" name="difficulte">
-          <option value="dAcbutant">DAcbutant</option>
-          <option value="intermAcdiaire">IntermAcdiaire</option>
-          <option value="avancAc">AvancAc</option>
+          <option value="d&eacute;butant">D&eacute;butant</option>
+          <option value="interm&eacute;diaire">Interm&eacute;diaire</option>
+          <option value="avanc&eacute;">Avanc&eacute;</option>
         </select>
       </div>
     </div>
 
     <div class="mb-2">
-      <label class="form-label">Tags (sAcparAcs par des virgules)</label>
+      <label class="form-label">Tags (s&eacute;par&eacute;s par des virgules)</label>
       <input class="form-control" [(ngModel)]="tags" name="tags" />
     </div>
 
     <div class="mb-2">
-      <label class="form-label">CatAcgories (ex: 1,2)</label>
+      <label class="form-label">Cat&eacute;gories (ex: 1,2)</label>
       <input class="form-control" [(ngModel)]="categories" name="categories" />
     </div>
 
@@ -40,5 +40,5 @@
     </div>
   </form>
 } @else {
-  <p>SAclectionnez une formation Aÿ modifier.</p>
+  <p>S&eacute;lectionnez une formation &agrave; modifier.</p>
 }

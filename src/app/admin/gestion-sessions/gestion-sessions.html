@@ -2,19 +2,19 @@
   <h2>Gestion des sessions</h2>
   <p>Liste des sessions</p>
 
-  @if (sessions.length > 0) {
+  @if (sessions().length > 0) {
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
           <th>Formation</th>
-          <th>PAcriode</th>
+          <th>Période</th>
           <th>Inscrits</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        @for (s of sessions; track s.id) {
+        @for (s of sessions(); track s.id) {
           <tr>
             <td>{{ s.id }}</td>
             <td>{{ s.formationId }}</td>
@@ -22,12 +22,12 @@
             <td>{{ s.candidatsInscrits.length }} / {{ s.maxInscrits }}</td>
             <td>
               <button class="btn btn-sm btn-outline-primary" (click)="toggleCandidates(s.id)">
-                {{ showing[s.id] ? 'Cacher' : 'Voir' }} candidats
+                {{ showing()[s.id] ? 'Cacher' : 'Voir' }} candidats
               </button>
             </td>
           </tr>
 
-          @if (showing[s.id]) {
+          @if (showing()[s.id]) {
             <tr>
               <td colspan="5">
                 @if (s.candidatsInscrits.length) {
@@ -52,3 +52,4 @@
     <p>Aucune session disponible.</p>
   }
 </section>
+

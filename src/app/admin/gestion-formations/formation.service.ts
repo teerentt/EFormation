@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Formation } from '../../models/formations.model';
 
 @Injectable({
-      providedIn: 'root',
+  providedIn: 'root',
 })
 export class FormationService {
-     private formationsList: Formation[] = [
+  private formationsList: Formation[] = [
     {
       id: 'F-101',
       titre: 'Angular Essentials',
-      description: 'Découvrir les bases d’Angular et créer des composants réutilisables.',
+      description: "Découvrir les bases d'Angular et créer des composants réutilisables.",
       heures: 30,
       programPdf: 'angular-essentials.pdf',
       difficulte: 'débutant',
@@ -63,6 +63,7 @@ export class FormationService {
   getNextId(): string {
     return `F-${100 + this.formationsList.length + 1}`;
   }
+
   getCategories(): number[] {
     const categories = new Set<number>();
     this.formationsList.forEach((formation) =>

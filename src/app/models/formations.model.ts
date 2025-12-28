@@ -8,4 +8,4 @@ export interface Formation {
   tags: string[];
   categories: number[];
   sessions?: string[];
-}  
+}

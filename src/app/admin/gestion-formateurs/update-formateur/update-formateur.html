@@ -1,6 +1,6 @@
-<div class="backdrop" (click)="onHideDialog()"></div>
+﻿<div class="backdrop" (click)="onHideDialog()"></div>
 <dialog open>
-  <h2>Update Formateur NAų {{ formateurInitial.id }} data</h2>
+  <h2>Mettre &agrave; jour le formateur n&deg; {{ formateurInitial.id }}</h2>
   <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
     <div class="d-flex gap-4">
       <div>
@@ -10,7 +10,7 @@
           class="form-control"
           id="fName"
           name="fName"
-          placeholder="Enter your first name"
+          placeholder="Entrez le nom"
           required
           minlength="3"
           [(ngModel)]="nom"
@@ -18,21 +18,21 @@
         />
         @if (enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)) {
           @if (enteredFName.hasError('required')) {
-            <div class="invalid-feedback">This field is required</div>
+            <div class="invalid-feedback">Ce champ est requis.</div>
           }
           @if (enteredFName.hasError('minlength')) {
-            <div class="invalid-feedback">First name must be at least 3 characters long.</div>
+            <div class="invalid-feedback">Le nom doit contenir au moins 3 caract&egrave;res.</div>
           }
         }
       </div>
       <div>
-        <label for="lName" class="form-label">Prenom</label>
+        <label for="lName" class="form-label">Pr&eacute;nom</label>
         <input
           type="text"
           class="form-control"
           id="lName"
           name="lName"
-          placeholder="Enter your last name"
+          placeholder="Entrez le pr&eacute;nom"
           required
           minlength="3"
           [(ngModel)]="prenom"
@@ -40,30 +40,30 @@
         />
         @if (enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
           @if (enteredLName.hasError('required')) {
-            <div class="invalid-feedback">This field is required</div>
+            <div class="invalid-feedback">Ce champ est requis.</div>
           }
           @if (enteredLName.hasError('minlength')) {
-            <div class="invalid-feedback">Last name must be at least 3 characters long.</div>
+            <div class="invalid-feedback">Le pr&eacute;nom doit contenir au moins 3 caract&egrave;res.</div>
           }
         }
       </div>
     </div>
 
     <div>
-      <label for="skills" class="form-label mt-2">CompActences</label>
+      <label for="skills" class="form-label mt-2">Comp&eacute;tences</label>
       <input
         type="text"
         class="form-control"
         id="skills"
         name="skills"
         required
-        placeholder="Enter your skills"
+        placeholder="Entrez les comp&eacute;tences"
         [(ngModel)]="specialite"
         #enteredSkills="ngModel"
       />
       @if (enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)) {
         @if (enteredSkills.hasError('required')) {
-          <div class="invalid-feedback">This field is required</div>
+          <div class="invalid-feedback">Ce champ est requis.</div>
         }
       }
     </div>
@@ -75,22 +75,22 @@
         id="cv"
         name="cv"
         required
-        placeholder="Enter your cv file"
+        placeholder="Entrez le CV"
         [(ngModel)]="cv"
         #enteredCv="ngModel"
       />
       @if (enteredCv.invalid && (enteredCv.dirty || enteredCv.touched)) {
         @if (enteredCv.hasError('required')) {
-          <div class="invalid-feedback">This field is required</div>
+          <div class="invalid-feedback">Ce champ est requis.</div>
         }
       }
     </div>
 
     <div class="actions mt-3 d-flex justify-content-end gap-3">
       <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
-        Cancel
+        Annuler
       </button>
-      <button type="submit" class="btn btn-outline-primary">Update</button>
+      <button type="submit" class="btn btn-outline-primary">Mettre &agrave; jour</button>
     </div>
   </form>
 </dialog>

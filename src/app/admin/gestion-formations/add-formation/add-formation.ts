@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+﻿import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Formation } from '../../../models/formations.model';
@@ -12,8 +12,8 @@ import { FormationService } from '../formation.service';
   styleUrls: ['./add-formation.css'],
 })
 export class AddFormation {
-   @Output() hideDialogEvent = new EventEmitter<boolean>();
-    titre = '';
+  @Output() hideDialogEvent = new EventEmitter<boolean>();
+  titre = '';
   description = '';
   heures: number | null = null;
   difficulte: Formation['difficulte'] = 'débutant';
@@ -22,10 +22,12 @@ export class AddFormation {
   programPdf = '';
 
   constructor(private formationService: FormationService) {}
+
   onHideDialog(): void {
     this.hideDialogEvent.emit(false);
   }
-   onSubmit(): void {
+
+  onSubmit(): void {
     if (!this.titre.trim() || !this.description.trim() || this.heures === null) {
       return;
     }

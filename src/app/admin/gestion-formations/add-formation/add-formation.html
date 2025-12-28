@@ -1,4 +1,4 @@
-<div class="backdrop" (click)="onHideDialog()"></div>
+﻿<div class="backdrop" (click)="onHideDialog()"></div>
 <dialog open>
   <h2>Ajouter une formation</h2>
   <form (ngSubmit)="onSubmit()" #f="ngForm">
@@ -15,7 +15,7 @@
         #titreInput="ngModel"
       />
       @if (titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
-        <div class="invalid-feedback">Le titre est requis (min 3 caractA"res).</div>
+        <div class="invalid-feedback">Le titre est requis (min 3 caract&egrave;res).</div>
       }
     </div>
     <div>
@@ -34,7 +34,7 @@
       }
     </div>
     <div>
-      <label for="heures" class="form-label">DurAce (heures)</label>
+      <label for="heures" class="form-label">Dur&eacute;e (heures)</label>
       <input
         type="number"
         class="form-control"
@@ -46,19 +46,19 @@
         #heuresInput="ngModel"
       />
       @if (heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
-        <div class="invalid-feedback">Indiquez une durAce valide.</div>
+        <div class="invalid-feedback">Indiquez une dur&eacute;e valide.</div>
       }
     </div>
     <div>
       <label for="difficulte" class="form-label">Niveau</label>
       <select class="form-select" id="difficulte" name="difficulte" [(ngModel)]="difficulte">
-        <option value="dAcbutant">DAcbutant</option>
-        <option value="intermAcdiaire">IntermAcdiaire</option>
-        <option value="avancAc">AvancAc</option>
+        <option value="d&eacute;butant">D&eacute;butant</option>
+        <option value="interm&eacute;diaire">Interm&eacute;diaire</option>
+        <option value="avanc&eacute;">Avanc&eacute;</option>
       </select>
     </div>
     <div>
-      <label for="tags" class="form-label">Tags (sAcparAcs par des virgules)</label>
+      <label for="tags" class="form-label">Tags (s&eacute;par&eacute;s par des virgules)</label>
       <input
         type="text"
         class="form-control"
@@ -68,7 +68,7 @@
       />
     </div>
     <div>
-      <label for="categories" class="form-label">CatAcgories (ids sAcparAcs par des virgules)</label>
+      <label for="categories" class="form-label">Cat&eacute;gories (ids s&eacute;par&eacute;s par des virgules)</label>
       <input
         type="text"
         class="form-control"
@@ -88,7 +88,7 @@
       />
     </div>
     <div class="mt-3 d-flex justify-content-end gap-2">
-      <button type="button" class="btn btn-outline-secondary" (click)="onHideDialog()">Cancel</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="onHideDialog()">Annuler</button>
       <button type="submit" class="btn btn-success" [disabled]="f.invalid">Ajouter</button>
     </div>
   </form>

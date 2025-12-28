@@ -29,7 +29,7 @@ export class PublicFormationDetail implements OnInit {
   ngOnInit(): void {
     const formationId = this.route.snapshot.paramMap.get('id');
     if (formationId) {
-      this.formation.set(this.formationService.getFormationById(formationId));
+      this.formation.set(this.formationService.getFormationById(formationId) ?? null);
       this.sessions.set(this.sessionService.getSessionsByFormation(formationId));
     }
   }
@@ -43,7 +43,7 @@ export class PublicFormationDetail implements OnInit {
     if (success) {
       this.registrationMessage.set({
         ...this.registrationMessage(),
-        [session.id]: 'Inscription confirmAce !',
+        [session.id]: 'Inscription confirmée !',
       });
       this.registrationStatus.set({
         ...this.registrationStatus(),
@@ -54,7 +54,7 @@ export class PublicFormationDetail implements OnInit {
       this.registrationMessage.set({
         ...this.registrationMessage(),
         [session.id]:
-          "Impossible d'inscrire ce candidat (session complA\"te ou email dAcjA� utilisAc).",
+          "Impossible d'inscrire ce candidat (session complète ou email déjà utilisé).",
       });
       this.registrationStatus.set({
         ...this.registrationStatus(),
@@ -63,6 +63,7 @@ export class PublicFormationDetail implements OnInit {
     }
   }
 }
+
 
 
 
