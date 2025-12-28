@@ -1,0 +1,20 @@
+<section class="mb-4">
+  <h1>Projet de gestion des sessions de formations</h1>
+  <p class="lead">
+    Cette application permet de présenter les formations de l'ISET de Rades et d'aider les
+    candidats à s'inscrire aux sessions disponibles.
+  </p>
+</section>
+
+<section>
+  <h2>Catégories disponibles</h2>
+  @if(categories.length > 0) {
+  <div class="d-flex flex-wrap gap-2">
+    @for(category of categories; track category) {
+    <span class="badge bg-primary">Catégorie {{ category }}</span>
+    }
+  </div>
+  } @else {
+  <p>Aucune catégorie n'est disponible pour le moment.</p>
+  }
+</section>

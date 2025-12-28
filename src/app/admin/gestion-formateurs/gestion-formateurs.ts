@@ -1,10 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UpdateFormateur } from "./update-formateur/update-formateur";
-import { AddFormateur } from "./add-formateur/add-formateur";
+import { UpdateFormateur } from './update-formateur/update-formateur';
+import { AddFormateur } from './add-formateur/add-formateur';
 import { FormateursService } from './formateurs.service';
 import { Formateur } from '../../models/formateur.model';
-
 @Component({
   selector: 'app-gestion-formateurs',
   standalone: true,
@@ -12,46 +11,34 @@ import { Formateur } from '../../models/formateur.model';
   templateUrl: './gestion-formateurs.html',
   styleUrls: ['./gestion-formateurs.css'],
 })
-export class GestionFormateurs {
-  formateur = signal<Formateur[]>([]);
-  toggleUpdateDialog = signal<boolean>(false);
-  toggleAddDialog = signal<boolean>(false);
-  formateurSelected = signal<Formateur>({
-    id: 0,
-    nom: '',
-    prenom: '',
-    email: '',
-    phone: 0,
-    cin: '',
-    cv: '',
-    specialite: [],
-  });
+export class GestionFormateurs implements OnInit {
+  formateurs: Formateur[] = [];
+  showUpdateDialog = false;
+  showAddDialog = false;
+  formateurSelected?: Formateur;
 
-  constructor(private formateurService: FormateursService) {
-    this.formateur.set(this.formateurService.getFormateurs());
+  constructor(private formateurService: FormateursService) {}
+
+  ngOnInit(): void {
+    this.formateurs = this.formateurService.getFormateurs();
   }
-
-  removeInstructor(formateurId: number) {
+  removeInstructor(formateurId: number): void {
     this.formateurService.removeFormateur(formateurId);
-    this.formateur.set(this.formateurService.getFormateurs());
+    this.formateurs = this.formateurService.getFormateurs();
   }
-
-  onShowUpdateDialog(formateur: Formateur) {
-    this.toggleUpdateDialog.set(true);
-    this.formateurSelected.set(formateur);
+onShowUpdateDialog(formateur: Formateur): void {
+    this.showUpdateDialog = true;
+    this.formateurSelected = formateur;
   }
-
-  onShowAddDialog() {
-    this.toggleAddDialog.set(true);
+   onShowAddDialog(): void {
+    this.showAddDialog = true;
   }
-
-  onHideUpdateDialog(status: boolean) {
-    this.toggleUpdateDialog.set(status);
-    this.formateur.set(this.formateurService.getFormateurs());
+ onHideUpdateDialog(status: boolean): void {
+    this.showUpdateDialog = status;
+    this.formateurs = this.formateurService.getFormateurs();
   }
-
-  onHideAddDialog(status: boolean) {
-    this.toggleAddDialog.set(status);
-    this.formateur.set(this.formateurService.getFormateurs());
+  onHideAddDialog(status: boolean): void {
+    this.showAddDialog = status;
+    this.formateurs = this.formateurService.getFormateurs();
   }
 }

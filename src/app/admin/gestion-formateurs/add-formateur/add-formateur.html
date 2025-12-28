@@ -1,87 +1,95 @@
-<h2>Ajouter un Formateur</h2>
-<form (ngSubmit)="onSubmit()" #f="ngForm">
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Ajouter une formation</h2>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
     <div>
-        <label for="fName" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez le nom de formateur" required
-            minlength="3" [(ngModel)]="nom" #nom="ngModel" />
-        <!--Input validator-->
-        @if(nom.invalid && (nom.dirty || nom.touched)) {
-        @if(nom.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } @if(nom.hasError('minlength')) {
-        <div class="invalid-feedback">Le nom doit contenir au moins 3 caractères.</div>
-        } }
+      <label for="titre" class="form-label">Titre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="titre"
+        name="titre"
+        required
+        minlength="3"
+        [(ngModel)]="titre"
+        #titreInput="ngModel"
+      />
+      @if(titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
+      <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
+      }
     </div>
     <div>
-        <label for="fName" class="form-label">Prénom</label>
-        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom de formateur"
-            required minlength="3" [(ngModel)]="prenom" #prenom="ngModel" />
-        <!--Input validator-->
-        @if(prenom.invalid && (prenom.dirty || prenom.touched)) {
-        @if(prenom.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } @if(prenom.hasError('minlength')) {
-        <div class="invalid-feedback">Le prénom doit contenir au moins 3 caractères.</div>
-        } }
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        required
+        [(ngModel)]="description"
+        #descriptionInput="ngModel"
+      ></textarea>
+      @if(descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)) {
+      <div class="invalid-feedback">La description est requise.</div>
+      }
     </div>
     <div>
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Entrez l'email de formateur"
-            required email [(ngModel)]="email" #email="ngModel" />
-        <!--Input validator-->
-        @if(email.invalid && (email.dirty || email.touched)) {
-        @if(email.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } @if(email.hasError('email')) {
-        <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
-        } }
+      <label for="heures" class="form-label">Durée (heures)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="heures"
+        name="heures"
+        required
+        min="1"
+        [(ngModel)]="heures"
+        #heuresInput="ngModel"
+      />
+      @if(heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
+      <div class="invalid-feedback">Indiquez une durée valide.</div>
+      }
     </div>
     <div>
-        <label for="number">Numéro de téléphone</label>
-        <input type="number" class="form-control" id="phone" name="phone"
-            placeholder="Entrez le numéro de téléphone de formateur" required [(ngModel)]="phone" #phone="ngModel" />
-        <!--Input validator-->
-        @if(phone.invalid && (phone.dirty || phone.touched)) {
-        @if(phone.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } }
+      <label for="difficulte" class="form-label">Niveau</label>
+      <select class="form-select" id="difficulte" name="difficulte" [(ngModel)]="difficulte">
+        <option value="débutant">Débutant</option>
+        <option value="intermédiaire">Intermédiaire</option>
+        <option value="avancé">Avancé</option>
+      </select>
     </div>
     <div>
-        <label for="cin">CIN</label>
-        <input type="text" class="form-control" id="cin" name="cin" pattern="[0-9]{8}"
-            placeholder="Entrez le CIN de formateur" required [(ngModel)]="cin" #cin="ngModel" />
-        <!--Input validator-->
-        @if(cin.invalid && (cin.dirty || cin.touched)) {
-        @if(cin.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        }
-        @if(cin.hasError('pattern')) {
-        <div class="invalid-feedback">Le CIN doit contenir exactement 8 chiffres.</div>
-        } }
+      <label for="tags" class="form-label">Tags (séparés par des virgules)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tags"
+        name="tags"
+        [(ngModel)]="tags"
+      />
     </div>
     <div>
-        <label for="specialites">Spécialités</label>
-        <input type="text" class="form-control" id="specialite" name="specialite"
-            placeholder="Entrez les spécialités de formateur (séparées par des virgules)" required
-            [(ngModel)]="specialite" #specialite="ngModel" />
-        <!--Input validator-->
-        @if(specialite.invalid && (specialite.dirty || specialite.touched)) {
-        @if(specialite.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } }
+      <label for="categories" class="form-label">Catégories (ids séparés par des virgules)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="categories"
+        name="categories"
+        [(ngModel)]="categories"
+      />
     </div>
     <div>
-        <label for="cv">CV</label>
-        <input type="text" class="form-control" id="cv" name="cv" placeholder="Entrez le CV de formateur" required
-            [(ngModel)]="cv" #cv="ngModel" />
-        <!--Input validator-->
-        @if(cv.invalid && (cv.dirty || cv.touched)) {
-        @if(cv.hasError('required')) {
-        <div class="invalid-feedback">Ce champ est requis</div>
-        } }
+      <label for="programPdf" class="form-label">Programme PDF</label>
+      <input
+        type="text"
+        class="form-control"
+        id="programPdf"
+        name="programPdf"
+        [(ngModel)]="programPdf"
+      />
     </div>
-    <div>
-        <button type="button" (click)="onHideDialog()" class="btn btn-primary" [disabled]="f.invalid">Cancel</button>
-        <button type="submit" (click)="onSubmit()" class="btn btn-success">Ajouter</button>
+    <div class="mt-3 d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-outline-secondary" (click)="onHideDialog()">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid">Ajouter</button>
     </div>
-</form>
+  </form>
+</dialog>

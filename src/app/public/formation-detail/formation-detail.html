@@ -1,0 +1,74 @@
+<a class="btn btn-link mb-3" routerLink="/formations">← Retour aux formations</a>
+
+@if(formation) {
+<section>
+  <h1>{{ formation.titre }}</h1>
+  <p>{{ formation.description }}</p>
+  <ul class="list-unstyled">
+    <li><strong>Durée :</strong> {{ formation.heures }} heures</li>
+    <li><strong>Niveau :</strong> {{ formation.difficulte }}</li>
+    <li><strong>Programme :</strong> {{ formation.programPdf || 'PDF non disponible' }}</li>
+  </ul>
+  <div class="mb-3">
+    @for(tag of formation.tags; track tag) {
+    <span class="badge bg-info text-dark me-1">{{ tag }}</span>
+    }
+  </div>
+</section>
+
+<section>
+  <h2>Sessions à venir</h2>
+  @if(sessions.length > 0) {
+  <div class="accordion" id="sessionsAccordion">
+    @for(session of sessions; track session.id) {
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-{{ session.id }}">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse-' + session.id"
+        >
+          Session {{ session.id }} • {{ session.dateDebut | date: 'dd/MM/yyyy' }} -
+          {{ session.dateFin | date: 'dd/MM/yyyy' }}
+        </button>
+      </h2>
+      <div
+        class="accordion-collapse collapse"
+        [id]="'collapse-' + session.id"
+        [attr.aria-labelledby]="'heading-' + session.id"
+        data-bs-parent="#sessionsAccordion"
+      >
+        <div class="accordion-body">
+          <p>{{ session.description }}</p>
+          <p>
+            <strong>Inscrits :</strong> {{ session.candidatsInscrits.length }}/{{
+              session.maxInscrits
+            }}
+          </p>
+          @if(isSessionFull(session)) {
+          <div class="alert alert-warning">Session complète, inscriptions désactivées.</div>
+          } @else {
+          <app-inscription-form (register)="onRegister(session, $event)"></app-inscription-form>
+          }
+          @if(registrationMessage[session.id]) {
+          <div
+            class="alert mt-3"
+            [class.alert-success]="registrationStatus[session.id] === 'success'"
+            [class.alert-danger]="registrationStatus[session.id] === 'error'"
+          >
+            {{ registrationMessage[session.id] }}
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <p>Aucune session programmée pour cette formation.</p>
+  }
+</section>
+} @else {
+<p>Formation introuvable.</p>
+}

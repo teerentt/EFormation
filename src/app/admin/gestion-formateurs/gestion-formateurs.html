@@ -1,10 +1,10 @@
-@if(toggleUpdateDialog()) {
-<app-update-formateur
-  (hideDialogEvenet)="onHideUpdateDialog($event)"
-  [formateurInitial]="formateurSelected()"
+@if(showUpdateDialog && formateurSelected) {
+  <app-update-formateur
+  (hideDialogEvent)="onHideUpdateDialog($event)"
+  [formateurInitial]="formateurSelected"
 ></app-update-formateur>
-} @if(toggleAddDialog()) {
-<app-add-formateur (hideDialogEvenet)="onHideAddDialog($event)"></app-add-formateur>
+} @if(showAddDialog) {
+<app-add-formateur (hideDialogEvent)="onHideAddDialog($event)"></app-add-formateur>
 }
 <div class="container mt-5 mb-5">
   <h1>Manage Instructors</h1>
@@ -29,9 +29,9 @@
       </tr>
     </thead>
     <tbody>
-      @for(formateur of formateur(); track formateur.id){
-      <tr>
-        <th scope="row">{{formateur.id}}</th>
+      @for(formateur of formateurs; track formateur.id){
+        <tr>
+           <th scope="row">{{ formateur.id }}</th>
         <td>{{ formateur.nom }}</td>
         <td>{{ formateur.prenom }}</td>
         <td>{{ formateur.email }}</td>
@@ -42,7 +42,7 @@
           <span class="badge rounded-pill bg-info"> {{ skill }} </span>}
         </td>
         <td>
-          <button (click)="onShowUpdateDialog(formateur)" class="btn btn-outline-primary">
+                    <button (click)="onShowUpdateDialog(formateur)" class="btn btn-outline-primary">
             Update
           </button>
 

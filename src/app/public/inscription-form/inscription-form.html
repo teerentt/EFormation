@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="row g-2">
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nom"
+        name="nom"
+        [(ngModel)]="nom"
+        required
+      />
+    </div>
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Prénom"
+        name="prenom"
+        [(ngModel)]="prenom"
+        required
+      />
+    </div>
+    <div class="col-md-4">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        email
+      />
+    </div>
+  </div>
+  <div class="mt-2">
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid">S'inscrire</button>
+  </div>
+</form>
