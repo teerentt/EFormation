@@ -1,29 +1,29 @@
-/* Gestion Formateurs — polished UI */
-.admin-card { background: #fff; border-radius: 10px; box-shadow: 0 6px 18px rgba(18,18,18,0.06); overflow: hidden; }
-.card-header { padding: 1rem 1.25rem; border-bottom: 1px solid #f1f1f1; display: flex; gap: 1rem; }
-.card-body { padding: 1rem; }
-.card-header h1 { font-size: 1.25rem; margin: 0; color: #222; }
-.toolbar { gap: .5rem; }
-.search-input { width: 260px; max-width: 40vw; min-width: 160px; }
-.table-responsive { margin-top: 0.75rem; }
-.table { width: 100%; border-collapse: separate; border-spacing: 0; }
-.table th, .table td { vertical-align: middle; padding: 0.75rem; }
-.table-striped tbody tr:nth-of-type(odd) { background-color: #fcfcfc; }
-.table-striped tbody tr:hover { background-color: #f8f9fa; }
-.badge { font-size: 0.8rem; padding: 0.35em 0.5em; background-color: #e9f4ff; color: #0b5ed7; border-radius: 999px; }
-.btn-primary { background-color: #0b5ed7; border-color: #0b5ed7; color: #fff; }
-.btn-primary:hover { background-color: #094aaf; }
-.btn-outline-danger { border-color: #f8d7da; color: #d9534f; }
-.actions .btn { margin-right: .25rem; }
+﻿/* Gestion formateurs */
+.admin-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
 
-/* Mobile: cards instead of table */
+.card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; gap: 1rem; }
+.card-body { padding: 1rem; }
+.card-header h1 { font-size: 1.25rem; margin: 0; color: var(--ink); }
+.toolbar { gap: 0.5rem; }
+.search-input { width: 260px; max-width: 40vw; min-width: 160px; border-radius: 999px; padding-left: 1rem; }
+.table-responsive { margin-top: 0.75rem; }
+.table-striped tbody tr:nth-of-type(odd) { background-color: #fcfaf7; }
+.table-striped tbody tr:hover { background-color: #f5f0e8; }
+.badge { font-size: 0.8rem; padding: 0.35em 0.55em; }
+.actions .btn { margin-right: 0.25rem; }
+
 @media (max-width: 720px) {
   .table-responsive { overflow: visible; }
   .table { display: block; }
   .table thead { display: none; }
-  .table tbody tr { display: block; margin-bottom: 0.75rem; border: 1px solid #eee; border-radius: 8px; padding: 0.75rem; }
+  .table tbody tr { display: block; margin-bottom: 0.75rem; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem; }
   .table tbody td { display: flex; justify-content: space-between; padding: 0.35rem 0.5rem; }
-  .table tbody td::before { content: attr(data-label); font-weight: 600; color: #333; }
-  .toolbar { width: 100%; flex-direction: column; align-items: flex-end; gap: .5rem; }
+  .table tbody td::before { content: attr(data-label); font-weight: 600; color: var(--muted); }
+  .toolbar { width: 100%; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
   .search-input { width: 100%; max-width: 100%; }
-} 
+}

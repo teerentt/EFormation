@@ -1,7 +1,7 @@
-/* Update Formateur dialog styles */
-.dialog-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,0.35); }
-dialog { border: none; border-radius: 10px; padding: 1rem; box-shadow: 0 12px 30px rgba(2,6,23,0.12); width: 95%; max-width: 760px; }
+﻿/* Update Formateur dialog */
+.backdrop { position: fixed; inset: 0; background: rgba(17, 25, 29, 0.45); }
+dialog { border: none; border-radius: var(--radius-md); padding: 1rem; box-shadow: var(--shadow-lg); width: 95%; max-width: 760px; }
 form { max-width: 720px; }
-.actions { display:flex; justify-content:flex-end; gap:.5rem; margin-top: .75rem; }
-.form-row { display:flex; gap:.5rem; }
-.form-row .col { flex:1; }
+.actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.75rem; }
+.form-row { display: flex; gap: 0.5rem; }
+.form-row .col { flex: 1; }

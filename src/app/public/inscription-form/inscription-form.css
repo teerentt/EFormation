@@ -1,4 +1,14 @@
-/* Inscription form style */
-.inscription-form { display:flex; gap:.5rem; align-items:center; }
-.inscription-form input[type="email"] { max-width: 320px; }
-.inscription-form button { padding: .45rem .75rem; }
+﻿/* Inscription form style */
+.inscription-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inscription-form input[type="email"] {
+  max-width: 320px;
+  min-width: 200px;
+}
+
+.inscription-form button { padding: 0.45rem 0.9rem; }

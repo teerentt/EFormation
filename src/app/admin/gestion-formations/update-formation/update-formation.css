@@ -1,5 +1,5 @@
-/* Update Formation dialog styles (reuse Add) */
+﻿/* Update Formation dialog styles */
 form { max-width: 720px; margin: 0 auto; }
-form .form-label { font-weight:600; }
-dialog { border: none; border-radius: 10px; padding: 1rem; box-shadow: 0 12px 30px rgba(2,6,23,0.12); width: 95%; max-width: 760px; }
-.actions { display:flex; justify-content:flex-end; gap:.5rem; margin-top: .75rem; }
+form .form-label { font-weight: 600; }
+dialog { border: none; border-radius: var(--radius-md); padding: 1rem; box-shadow: var(--shadow-lg); width: 95%; max-width: 760px; }
+.actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.75rem; }

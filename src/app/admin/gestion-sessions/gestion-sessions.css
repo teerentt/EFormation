@@ -1,3 +1,10 @@
-/* Gestion sessions */
-.session-card { border:1px solid var(--border); padding: .9rem; border-radius:8px; background:var(--surface); box-shadow:var(--shadow-sm); margin-bottom: .75rem; }
-.session-meta { color: var(--muted); font-size: .92rem; }
+﻿/* Gestion sessions */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.card h5 { margin: 0 0 1rem 0; }
+
+.table { margin-top: 1rem; }

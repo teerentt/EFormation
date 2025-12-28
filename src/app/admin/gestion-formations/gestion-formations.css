@@ -1,4 +1,6 @@
-/* Gestion formations */
-.formations-list .card { margin-bottom: .75rem; }
-.formations-list .actions { display:flex; gap:.5rem; }
-.formations-controls { display:flex; gap: .5rem; align-items:center; justify-content:space-between; }
+﻿/* Gestion formations */
+.table { background: var(--surface); }
+
+.table th { white-space: nowrap; }
+
+button.btn-outline-secondary { border-color: var(--border); }
