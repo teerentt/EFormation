@@ -6,8 +6,8 @@ import { FormationService } from '../../admin/gestion-formations/formation.servi
   selector: 'app-public-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './public-home.html',
-  styleUrl: './public-home.css',
+  templateUrl:  './home.html',
+  styleUrl: './home.css',
 })
 export class PublicHome implements OnInit {
   categories: number[] = [];

@@ -4,15 +4,15 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Formation } from '../../models/formations.model';
 import { Session } from '../../models/session.model';
 import { FormationService } from '../../admin/gestion-formations/formation.service';
-import { SessionService } from '../../admin/gestion-sessions/session.service';
+import { SessionService } from '../../admin/gestion-sessions/sessions.service';
 import { InscriptionForm } from '../inscription-form/inscription-form';
 
 @Component({
   selector: 'app-public-formation-detail',
   standalone: true,
   imports: [CommonModule, RouterLink, InscriptionForm],
-  templateUrl: './public-formation-detail.html',
-  styleUrl: './public-formation-detail.css',
+  templateUrl:  './formation-detail.html',
+  styleUrl: './formation-detail.css',
 })
 export class PublicFormationDetail implements OnInit {
   formation?: Formation;

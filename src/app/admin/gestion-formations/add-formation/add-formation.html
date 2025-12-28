@@ -1,1 +1,95 @@
-<p>add-formation works!</p>
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Ajouter une formation</h2>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div>
+      <label for="titre" class="form-label">Titre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="titre"
+        name="titre"
+        required
+        minlength="3"
+        [(ngModel)]="titre"
+        #titreInput="ngModel"
+      />
+      @if(titreInput.invalid && (titreInput.dirty || titreInput.touched)) {
+      <div class="invalid-feedback">Le titre est requis (min 3 caractères).</div>
+      }
+    </div>
+    <div>
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        required
+        [(ngModel)]="description"
+        #descriptionInput="ngModel"
+      ></textarea>
+      @if(descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)) {
+      <div class="invalid-feedback">La description est requise.</div>
+      }
+    </div>
+    <div>
+      <label for="heures" class="form-label">Durée (heures)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="heures"
+        name="heures"
+        required
+        min="1"
+        [(ngModel)]="heures"
+        #heuresInput="ngModel"
+      />
+      @if(heuresInput.invalid && (heuresInput.dirty || heuresInput.touched)) {
+      <div class="invalid-feedback">Indiquez une durée valide.</div>
+      }
+    </div>
+    <div>
+      <label for="difficulte" class="form-label">Niveau</label>
+      <select class="form-select" id="difficulte" name="difficulte" [(ngModel)]="difficulte">
+        <option value="débutant">Débutant</option>
+        <option value="intermédiaire">Intermédiaire</option>
+        <option value="avancé">Avancé</option>
+      </select>
+    </div>
+    <div>
+      <label for="tags" class="form-label">Tags (séparés par des virgules)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tags"
+        name="tags"
+        [(ngModel)]="tags"
+      />
+    </div>
+    <div>
+      <label for="categories" class="form-label">Catégories (ids séparés par des virgules)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="categories"
+        name="categories"
+        [(ngModel)]="categories"
+      />
+    </div>
+    <div>
+      <label for="programPdf" class="form-label">Programme PDF</label>
+      <input
+        type="text"
+        class="form-control"
+        id="programPdf"
+        name="programPdf"
+        [(ngModel)]="programPdf"
+      />
+    </div>
+    <div class="mt-3 d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-outline-secondary" (click)="onHideDialog()">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid">Ajouter</button>
+    </div>
+  </form>
+</dialog>

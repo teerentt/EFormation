@@ -1,48 +1,50 @@
-import { Component, output, signal } from '@angular/core';
-import { Formation } from '../../../models/formations.model';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Formation } from '../../../models/formations.model';
+import { FormationService } from '../formation.service';
+
 @Component({
   selector: 'app-add-formation',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './add-formation.html',
-  styleUrl: './add-formation.css',
+  styleUrls: ['./add-formation.css'],
 })
 export class AddFormation {
-  formationData= signal<Formation>({
-    id:0,
-    titre: '',
-    description: '',
-    heures: 0,
-    difficulte: 'débutant',
-    tags: [],
-    categories: [],
-    sessions: [],
-  });
-  constructor(private formationService: FormationService) {
+   @Output() hideDialogEvent = new EventEmitter<boolean>();
+    titre = '';
+  description = '';
+  heures: number | null = null;
+  difficulte: Formation['difficulte'] = 'débutant';
+  tags = '';
+  categories = '';
+  programPdf = '';
 
+  constructor(private formationService: FormationService) {}
+  onHideDialog(): void {
+    this.hideDialogEvent.emit(false);
   }
-
-  hidDialogEvent=output<boolean>();
-  onHideDialog(){
-    this.hidDialogEvent.emit(true);
+   onSubmit(): void {
+    if (!this.titre.trim() || !this.description.trim() || this.heures === null) {
+      return;
+    }
+    const newFormation: Formation = {
+      id: this.formationService.getNextId(),
+      titre: this.titre,
+      description: this.description,
+      heures: this.heures,
+      programPdf: this.programPdf || undefined,
+      difficulte: this.difficulte,
+      tags: this.tags
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean),
+      categories: this.categories
+        .split(',')
+        .map((item) => Number(item.trim()))
+        .filter((value) => !Number.isNaN(value)),
+    };
+    this.formationService.addFormation(newFormation);
+    this.onHideDialog();
   }
-
-  onSubmit(){
-    if(this.formationService.titre !== undefined && this.formationData().description !== undefined
-    && this.formationService.heures !== undefined
-    && this.formationService.difficulté !== undefined
-    && this.formationData().tags !== undefined
-    && this.formationData().categories !== undefined
-    && this.formationData().sessions !== undefined){
-      let newFormation:Formation={
-        id:this.formationService.id,
-        titre:this.formationService.titre,
-        description:this.formationService.description,
-        heures:this.formationService.heures,
-        difficulté:this.formationService.difficulté,
-        tags:this.formationData().tags,
-        categories:this.formationData().categories,
-        sessions:this.formationData().sessions,
-      };
 }
-  }}

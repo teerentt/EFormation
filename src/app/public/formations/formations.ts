@@ -9,8 +9,8 @@ import { FormationService } from '../../admin/gestion-formations/formation.servi
   selector: 'app-public-formations',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './public-formations.html',
-  styleUrl: './public-formations.css',
+  templateUrl: './formations.html',
+  styleUrl: './formations.css',
 })
 export class PublicFormations implements OnInit {
   formations: Formation[] = [];

@@ -1,58 +1,73 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Formation } from '../../models/formations.model';
+
 @Injectable({
-        providedIn: 'root',
+      providedIn: 'root',
 })
 export class FormationService {
-     private formationsList = signal<Formation[]>([
-      {
-        id: 1,
-        titre: 'Développement Web',
-        description: 'Apprendre les fondamentaux du développement web moderne.',
-        heures: 60,
-        programPdf: 'programme-dev-web.pdf',
-        difficulte: 'débutant',
-        tags: ['html', 'css', 'javascript'],
-        categories: [1, 3],
-        sessions: ['S1', 'S2'],
-      },
-      {
-        id: 2,
-        titre: 'Data Analytics',
-        description: "Maîtriser les outils d'analyse de données et la data visualisation.",
-        heures: 45,
-        programPdf: 'programme-data.pdf',
-        difficulte: 'intermédiaire',
-        tags: ['python', 'pandas', 'visualisation'],
-        categories: [2, 4],
-        sessions: ['S3'],
-      },
-      {
-        id: 3,
-        titre: 'Cybersécurité',
-        description: 'Comprendre les enjeux de la sécurité informatique et les bonnes pratiques.',
-        heures: 50,
-        programPdf: 'programme-cybersecurite.pdf',
-        difficulte: 'avancé',
-        tags: ['réseau', 'sécurité', 'audit'],
-        categories: [3],
-        sessions: ['S4'],
-      },
-    ]);
+     private formationsList: Formation[] = [
+    {
+      id: 'F-101',
+      titre: 'Angular Essentials',
+      description: 'Découvrir les bases d’Angular et créer des composants réutilisables.',
+      heures: 30,
+      programPdf: 'angular-essentials.pdf',
+      difficulte: 'débutant',
+      tags: ['angular', 'typescript', 'components'],
+      categories: [1, 2],
+    },
+    {
+      id: 'F-202',
+      titre: 'Gestion des APIs avec Node.js',
+      description: 'Construire des APIs REST sécurisées avec Node.js et Express.',
+      heures: 24,
+      programPdf: 'node-api.pdf',
+      difficulte: 'intermédiaire',
+      tags: ['nodejs', 'express', 'api'],
+      categories: [2, 3],
+    },
+    {
+      id: 'F-303',
+      titre: 'Analyse de données avec Python',
+      description: 'Manipuler, analyser et visualiser des données en Python.',
+      heures: 40,
+      programPdf: 'python-data.pdf',
+      difficulte: 'avancé',
+      tags: ['python', 'pandas', 'analytics'],
+      categories: [4],
+    },
+  ];
 
-    getFormations(): Formation[] {
-      return this.formationsList();
-    }
-     getFormationById(id: string): Formation | undefined {
-      const formationId = Number(id);
-      return this.formationsList().find((formation) => formation.id === formationId);
-    }
+  getFormations(): Formation[] {
+    return [...this.formationsList];
+  }
 
-    getCategories(): number[] {
-      const categories = new Set<number>();
-      this.formationsList().forEach((formation) => {
-        formation.categories.forEach((category) => categories.add(category));
-      });
-      return Array.from(categories);
-    }
+  getFormationById(id: string): Formation | undefined {
+    return this.formationsList.find((formation) => formation.id === id);
+  }
+
+  addFormation(formation: Formation): void {
+    this.formationsList = [...this.formationsList, formation];
+  }
+
+  updateFormation(updatedFormation: Formation): void {
+    this.formationsList = this.formationsList.map((formation) =>
+      formation.id === updatedFormation.id ? updatedFormation : formation
+    );
+  }
+
+  removeFormation(id: string): void {
+    this.formationsList = this.formationsList.filter((formation) => formation.id !== id);
+  }
+
+  getNextId(): string {
+    return `F-${100 + this.formationsList.length + 1}`;
+  }
+  getCategories(): number[] {
+    const categories = new Set<number>();
+    this.formationsList.forEach((formation) =>
+      formation.categories?.forEach((category) => categories.add(category))
+    );
+    return Array.from(categories);
+  }
 }

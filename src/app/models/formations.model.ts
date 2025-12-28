@@ -1,5 +1,5 @@
 export interface Formation {
-  id: number;
+  id: string;
   titre: string;
   description: string;
   heures: number;
@@ -7,5 +7,5 @@ export interface Formation {
   difficulte: 'débutant' | 'intermédiaire' | 'avancé';
   tags: string[];
   categories: number[];
-  sessions: string[];
-} 
+  sessions?: string[];
+}  
