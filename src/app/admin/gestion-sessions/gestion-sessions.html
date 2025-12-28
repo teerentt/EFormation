@@ -1,54 +1,135 @@
-<section>
-    <h2>Gestion des sessions</h2>
-    <p>Liste des sessions</p>
+﻿<section>
+  <h2>Gestion des sessions</h2>
+  <p>Liste des sessions</p>
 
-    @if (sessions().length > 0) {
+  <button class="btn btn-primary mb-3" type="button" (click)="onShowAddSession()">
+    Ajouter une session
+  </button>
+
+  @if (showAddForm()) {
+    <div class="card p-3 mb-3">
+      <h5 class="mb-3">Nouvelle session</h5>
+      <form (ngSubmit)="onCreateSession()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Formation</label>
+            <select
+              class="form-select"
+              [ngModel]="selectedFormationId()"
+              (ngModelChange)="selectedFormationId.set($event)"
+              name="formationId"
+              required
+            >
+              <option value="">Selectionner une formation</option>
+              @for (f of formations(); track f.id) {
+                <option [value]="f.id">{{ f.titre }}</option>
+              }
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Date debut</label>
+            <input
+              type="date"
+              class="form-control"
+              [ngModel]="dateDebut()"
+              (ngModelChange)="dateDebut.set($event)"
+              name="dateDebut"
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Date fin</label>
+            <input
+              type="date"
+              class="form-control"
+              [ngModel]="dateFin()"
+              (ngModelChange)="dateFin.set($event)"
+              name="dateFin"
+              required
+            />
+          </div>
+          <div class="col-md-8">
+            <label class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              [ngModel]="description()"
+              (ngModelChange)="description.set($event)"
+              name="description"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Max inscrits</label>
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              [ngModel]="maxInscrits()"
+              (ngModelChange)="onMaxInscritsChange($event)"
+              name="maxInscrits"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex gap-2">
+          <button type="submit" class="btn btn-success">Ajouter</button>
+          <button type="button" class="btn btn-outline-secondary" (click)="onCancelAddSession()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+
+  @if (sessions().length > 0) {
     <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Formation</th>
-                <th>Période</th>
-                <th>Inscrits</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (s of sessions(); track s.id) {
-            <tr>
-                <td>{{ s.id }}</td>
-                <td>{{ s.formationId }}</td>
-                <td>{{ s.dateDebut | date:'shortDate' }} - {{ s.dateFin | date:'shortDate' }}</td>
-                <td>{{ s.candidatsInscrits.length }} / {{ s.maxInscrits }}</td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary" (click)="toggleCandidates(s.id)">
-                        {{ showing()[s.id] ? 'Cacher' : 'Voir' }} candidats
-                    </button>
-                </td>
-            </tr>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Formation</th>
+          <th>Periode</th>
+          <th>Inscrits</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (s of sessions(); track s.id) {
+          <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ getFormationTitle(s.formationId) }}</td>
+            <td>{{ s.dateDebut | date:'shortDate' }} - {{ s.dateFin | date:'shortDate' }}</td>
+            <td>{{ s.candidatsInscrits.length }} / {{ s.maxInscrits }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" (click)="toggleCandidates(s.id)">
+                {{ showing()[s.id] ? 'Cacher' : 'Voir' }} candidats
+              </button>
+            </td>
+          </tr>
 
-            @if (showing()[s.id]) {
+          @if (showing()[s.id]) {
             <tr>
-                <td colspan="5">
-                    @if (s.candidatsInscrits.length) {
-                    <ul>
-                        @for (c of s.candidatsInscrits; track c) {
-                        <li>{{ c }}</li>
-                        }
-                    </ul>
-                    } @else {
-                    <p>Aucun candidat inscrit.</p>
+              <td colspan="5">
+                @if (s.candidatsInscrits.length) {
+                  <ul>
+                    @for (c of s.candidatsInscrits; track c) {
+                      <li>{{ c }}</li>
                     }
-                    <hr />
-                    <p><strong>Test d'inscription (admin)</strong></p>
-                    <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
-                </td>
+                  </ul>
+                } @else {
+                  <p>Aucun candidat inscrit.</p>
+                }
+                <hr />
+                <p><strong>Test d'inscription (admin)</strong></p>
+                <app-inscription-form (register)="registerFor(s.id, $event)"></app-inscription-form>
+              </td>
             </tr>
-            }
-            }
-        </tbody>
+          }
+        }
+      </tbody>
     </table>
-    } @else {
+  } @else {
     <p>Aucune session disponible.</p>
-    }
+  }
 </section>

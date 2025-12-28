@@ -79,4 +79,18 @@ export class SessionService {
     this.sessionsList.set(updatedSessions);
     return true;
   }
+
+  addSession(session: Session): void {
+    this.sessionsList.set([...this.sessionsList(), session]);
+  }
+
+  getNextId(): string {
+    const ids = this.sessionsList().map((s) => s.id);
+    const maxId = ids.reduce((max, id) => {
+      const match = /^S(\d+)$/.exec(id);
+      const value = match ? Number(match[1]) : 0;
+      return value > max ? value : max;
+    }, 0);
+    return `S${maxId + 1}`;
+  }
 }
